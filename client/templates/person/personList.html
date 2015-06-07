@@ -1,0 +1,10 @@
+<template name="personList">
+    <div>
+        个人列表
+    </div>
+    {{#each persons}}
+        <div>
+        <a href="{{_id}}">{{name}}</a>
+        </div>
+    {{/each}}
+</template>

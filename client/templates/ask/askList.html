@@ -1,0 +1,9 @@
+<template name="askList">
+    <div>
+        <h3>求助列表</h3>
+    </div>
+    {{#each asks}}
+        <div class="bg-primary">{{title}}</div>
+        <p>{{detail}}</p>
+    {{/each}}
+</template>

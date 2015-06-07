@@ -1,0 +1,158 @@
+<template name="personEdit">
+    <form class="main form page" id="person_edit" method="POST">
+    <input type="hidden" name="id" value="{{_id}}"/>
+    <p class="bg-primary">基本信息</p>
+    <div>
+        <input type="text" name="name" id="name" placeholder="真实姓名" width="4" value="{{name}}"/>
+    </div>
+    <div>
+        <input type="text" name="weixinId" id="weixinId" placeholder="微信号" alt="微信号" value="{{wxid}}"/>
+    </div>
+    <div>
+        <input type="mail" name="email" id="email" placeholder="电子邮箱" value="{{mail}}"/>
+    </div>
+    <div>
+        <input type="text" name="mobile" id="mobile" placeholder="手机" value="{{mobile}}"/>
+    </div>
+    <div>
+        <select name="sex" id="sex">
+            <option value="">性别...</option>
+            <option value="M">男</option>
+            <option value="F">女</option>
+            <option value="S">保密</option>
+        </select>
+    </div>
+    <div>
+        <select name="birth_period" id="birth_period">
+            <option value="">出生年代...</option>
+            <option value="50前">50前</option>
+            <option value="50后">50后</option>
+            <option value="60后">60后</option>
+            <option value="70后">70后</option>
+            <option value="80后">80后</option>
+            <option value="90后">90后</option>
+            <option value="00后">00后</option>
+        </select>
+    </div>
+    <div>
+        <input type="text" name="current_location" id="current_location" placeholder="现居住区域"/>
+    </div>
+    <div>
+        <input type="text" name="borth_location" id="borth_location" placeholder="籍贯"/>
+    </div>
+    <p class="bg-primary">创投对接</p>
+    <div>
+        <select name="status" id="status">
+            <option value="">目前状态...</option>
+            <option value="全职创业">全职创业</option>
+            <option value="兼职创业">兼职创业</option>
+            <option value="有项目想法">有项目想法</option>
+            <option value="投资人">投资人</option>
+            <option value="媒体人">媒体人</option>
+            <option value="技术人员">技术人员</option>
+            <option value="其他">其他</option>
+        </select>
+    </div>
+    <div>
+        <select name="time_input" id="time_input">
+            <option value="">时间投入...</option>
+            <option value="全部">全部</option>
+            <option value="每周20小时">每周20小时</option>
+            <option value="每周10小时">每周10小时</option>
+            <option value="每周5小时">每周5小时</option>
+            <option value="其他">其他</option>
+        </select>
+    </div>
+    <div>
+        <select name="money_input" id="money_input">
+            <option value="">资金投入...</option>
+            <option value="愿意投入较多资金">愿意投入较多资金</option>
+            <option value="愿意投入小量资金">愿意投入小量资金</option>
+            <option value="没有资金">没有资金</option>
+            <option value="其他">其他</option>
+        </select>
+    </div>
+    <div>
+        <select name="career_area" id="career_area">
+            <option value="">个人所在行业...</option>
+            <option value="互联网">互联网</option>
+            <option value="通信">通信</option>
+            <option value="金融">金融</option>
+            <option value="消费品">消费品</option>
+            <option value="学生">学生</option>
+            <option value="教育培训">教育培训</option>
+            <option value="生活服务业">生活服务业</option>
+            <option value="消费品">消费品</option>
+            <option value="医疗卫生">医疗卫生</option>
+            <option value="政府组织">政府组织</option>
+            <option value="工商贸易">工商贸易</option>
+            <option value="其他">其他</option>
+        </select>
+    </div>
+    <div>
+        <input type="text" name="target_area" id="target_area" placeholder="创业方向"/>
+    </div>
+    <p class="bg-primary">其他信息</p>
+    <div>
+        <label class="control-label" for="title">个人标签</label>
+        <div class="container">
+            <div class="row">
+            <input type="checkbox" name="my_tag" id="my_tag_1" value="技术"/>技术
+            <input type="checkbox" name="my_tag" id="my_tag_2" value="运营"/>运营
+            <input type="checkbox" name="my_tag" id="my_tag_3" value="产品"/>产品
+            </div>
+            <div class="row">
+            <input type="checkbox" name="my_tag" id="my_tag_4" value="销售"/>销售
+            <input type="checkbox" name="my_tag" id="my_tag_5" value="渠道"/>渠道
+            </div>
+            <div class="row">
+            <input type="checkbox" name="my_tag" id="my_tag_6" value="合伙人"/>合伙人
+            <input type="checkbox" name="my_tag" id="my_tag_7" value="投资人"/>投资人
+            </div>
+            <div class="row">
+            <input type="checkbox" name="my_tag" id="my_tag_8" value="其他"/>其他
+            </div>
+        </div>
+    </div>
+    <div>
+        <label class="control-label" for="title">择友标签</label>
+        <div class="container">
+            <div class="row">
+            <input type="checkbox" name="friend_tag" id="friend_tag_1" value="技术"/>技术
+            <input type="checkbox" name="friend_tag" id="friend_tag_2" value="运营"/>运营
+            <input type="checkbox" name="friend_tag" id="friend_tag_3" value="产品"/>产品
+            </div>
+            <div class="row">
+            <input type="checkbox" name="friend_tag" id="friend_tag_4" value="销售"/>销售
+            <input type="checkbox" name="friend_tag" id="friend_tag_5" value="渠道"/>渠道
+            </div>
+            <div class="row">
+            <input type="checkbox" name="friend_tag" id="friend_tag_6" value="合伙人"/>合伙人
+            <input type="checkbox" name="friend_tag" id="friend_tag_7" value="投资人"/>投资人
+            </div>
+            <div class="row">
+            <input type="checkbox" name="friend_tag" id="friend_tag_8" value="其他"/>其他
+            </div>
+        </div>
+    </div>
+    <div>
+        <textarea name="intro" id="intro" placeholder="自我简介"></textarea>
+    </div>
+    <input type="submit" value="提交"/>
+    </form>
+</template>
+
+<template name="personNew">
+    <div>
+        <h2>完善个人信息</h2>
+    </div>
+    {{>personEdit}}
+</template>
+
+<template name="personUpdate">
+    <div>
+        <h2>修改个人信息</h2>
+    </div>
+    {{>personEdit}}
+</template>
+
