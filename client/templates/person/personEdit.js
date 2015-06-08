@@ -33,8 +33,4 @@ Template.personEdit.events({
 
         Router.go('personList');
     },
-
-    'load #person_edit' : function(e) {
-        alert('hello');
-    }
 })
