@@ -138,21 +138,21 @@
     <div>
         <textarea name="intro" id="intro" placeholder="自我简介">{{intro}}</textarea>
     </div>
-    <input type="submit" value="提交"/>
+    <div>
+        <input type="submit" value="保存" class="btn btn-primary"/>
+    </div>
     </form>
 </template>
 
 <template name="personNew">
     <div>
-        <h2>完善个人信息</h2>
+        <h4>完善个人信息</h4>
     </div>
     {{>personEdit}}
 </template>
 
 <template name="personUpdate">
-    <div>
-        <h2>修改个人信息</h2>
-    </div>
+    <h4>修改个人信息</h4>
     {{>personEdit}}
     <script>
         $('#sex').val('{{sex}}');

@@ -1,14 +1,41 @@
 <template name="askEdit">
-    <div>
-        编辑求助信息
-    </div>
     <form class="main form page" method="POST">
+    <input type="hidden" name="id" id="id" value="{{_id}}"/>
     <div>
-        <input type="text" name="title" id="title" placeholder="标题"/>
+        <input type="text" name="title" id="title" placeholder="标题" value="{{title}}"/>
     </div>
     <div>
-        <textarea name="detail" id="detail" placeholder="详细信息" rows="5"></textarea>
+    <label >标签</label>
+    <select name="tag" id="tag">
+        <option value="">求助标签...</option>
+        <option value="">找人...</option>
+        <option value="找人-技术"> － 技术</option>
+        <option value="找人-运营"> － 运营</option>
+        <option value="找人-销售"> － 销售</option>
+        <option value="找人-设计"> － 设计</option>
+        <option value="">找钱...</option>
+        <option value="找钱-风投"> － 风投</option>
+        <option value="找钱-天使"> － 天使</option>
+        <option value="找钱-众筹"> － 众筹</option>
+        <option value="找钱-借贷"> － 借贷</option>
+        <option value="">找方向...</option>
+        <option value="找方向-行业"> － 行业</option>
+        <option value="找方向-产品"> － 产品</option>
+        <option value="找方向-概念"> － 概念</option>
+    </select>
+    </div>
+    <div>
+        <textarea name="detail" id="detail" placeholder="详细信息" rows="5" value="{{detail}}" style="width:90%;"></textarea>
     </div>
     <input type="submit" value="提交"/>
     </form>
+    <script type="text/javascript">
+        // var tag = " － " + {{tag}};
+        // gostart.setCheckboxGroup($('[name=tag]'), '{{tag}}');
+    </script>
+</template>
+
+<template name="askNew">
+    <h4>编辑求助信息</h4>
+    {{>askEdit}}
 </template>
