@@ -33,4 +33,17 @@ Template.personEdit.events({
 
         Router.go('personList');
     },
-})
+});
+
+Template.personEdit.onRendered(function() {
+        var t = this;
+        t.$('#sex').val(this.data.sex);
+        t.$('#birth_period').val(this.data.birth);
+        t.$('#status').val(this.data.status);
+        t.$('#time_input').val(this.data.timeIn);
+        t.$('#money_input').val(this.data.capIn);
+        t.$('#career_area').val(this.data.career);
+        gostart.setCheckboxGroup(t.$('[name=my_tag]'), this.data.tag);
+        gostart.setCheckboxGroup(t.$('[name=friend_tag]'), this.data.frndTag);
+    }
+);

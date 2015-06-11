@@ -154,15 +154,5 @@
 <template name="personUpdate">
     <h4>修改个人信息</h4>
     {{>personEdit}}
-    <script>
-        $('#sex').val('{{sex}}');
-        $('#birth_period').val('{{birth}}');
-        $('#status').val('{{status}}');
-        $('#time_input').val('{{timeIn}}');
-        $('#money_input').val('{{capIn}}');
-        $('#career_area').val('{{career}}');
-        gostart.setCheckboxGroup($('[name=my_tag]'), '{{tag}}');
-        gostart.setCheckboxGroup($('[name=friend_tag]'), '{{frndTag}}');
-    </script>
 </template>
 
