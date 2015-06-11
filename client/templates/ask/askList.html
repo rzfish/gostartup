@@ -1,7 +1,12 @@
 <template name="askList">
     <h4>求助列表</h4>
     {{#each asks}}
-        <div class="bg-primary">{{title}}</div>
+        <div class="bg-primary"><b>{{title}}</b> - {{author}}</div>
         <p>{{detail}}</p>
+        <div class="row">
+            <div class="col-xs-2">{{tag}}</div>
+            <div class="col-xs-2"><a href="/ask/update/{{_id}}">编辑</a></div>
+            <div class="col-xs-2"><a href="/ask/reply/{{_id}}">回复</a></div>
+        </div>
     {{/each}}
 </template>
