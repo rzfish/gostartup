@@ -1,11 +1,10 @@
 <template name="askList">
     <h4>求助列表</h4>
     {{#each asks}}
-        <div class="bg-primary"><b>{{title}}</b> - {{author}}</div>
+        <div class="bg-primary">[{{tag}}] <b>{{title}}</b> - {{author}}</div>
         <pre>{{detail}}</pre>
         <div class="row">
             <div class="col-xs-5">{{created}}</div>
-            <div class="col-xs-3">{{tag}}</div>
             {{#if currentUser}}
             <div class="col-xs-2"><a href="/ask/update/{{_id}}">编辑</a></div>
             <div class="col-xs-2"><a href="/ask/reply/{{_id}}">回复</a></div>
