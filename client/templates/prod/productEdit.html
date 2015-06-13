@@ -30,7 +30,7 @@
     </div>
     <div>
     <div><label>这个痛点和你有什么联系</label></div>
-    <textarea name="pain_to_me" id="pain_to_me" placeholder="是您自己亲身经历的痛点？你是否深入了解这个行业？" rows="5" style="width:90%;">{{painToMe}}</textarea>
+    <textarea name="pain_to_me" id="pain_to_me" placeholder="是您自己亲身经历的痛点？你是否深入了解这个行业？" rows="5" style="width:90%;">{{pnToMe}}</textarea>
     </div>
     <p class="bg-primary">产品特色</p>
     <div>
@@ -47,10 +47,10 @@
 
 <template name="prodNew">
     <h4>新建产品信息</h4>
-    {{>askEdit}}
+    {{>prodEdit}}
 </template>
 
 <template name="prodUpdate">
     <h4>编辑产品信息</h4>
-    {{>askEdit}}
+    {{>prodEdit}}
 </template>

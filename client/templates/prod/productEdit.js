@@ -16,8 +16,6 @@ Template.prodEdit.events({
             advtg: t.find('[name=advantage]').val(),
         };
 
-        alert(gostart.printObject(Meteor.user()));
-        return;
         var id = t.find('[name=id]').val();
         if(id == "") {  //new prod
             author: Meteor.user().username;
@@ -34,5 +32,6 @@ Template.prodEdit.events({
 });
 
 Template.prodEdit.onRendered(function() {
+    this.$('#pain_level').val(this.data.painLvl)
     }
 );

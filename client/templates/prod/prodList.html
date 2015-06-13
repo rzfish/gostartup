@@ -1,0 +1,6 @@
+<template name="prodList">
+    <h4>产品列表</h4>
+    {{#each prods}}
+        <div class="bg-info"><a href="/product/detail/{{_id}}"><b>{{title}}</b></a> - {{author}}</div>
+    {{/each}}
+</template>
