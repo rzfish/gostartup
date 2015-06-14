@@ -10,17 +10,16 @@ Template.askEdit.events({
             detail: t.find('[name=detail]').val(),
         };
 
-        alert(gostart.printObject(Meteor.user()));
-        return;
         var id = t.find('[name=id]').val();
         if(id == "") {  //new ask
-            author: Meteor.user().username;
+            ask.author = Meteor.user().username;
             ask.created = gostart.getTimeStr();
             ask.updated = ask.created;
             ask.reCnt = 0;
             ask.up = 0;
             Asks.insert(ask);
         } else {
+            ask.updated = gostart.getTimeStr();
             Asks.update({_id: id}, {$set: ask});
         }
         Router.go('askList');
