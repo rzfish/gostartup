@@ -10,13 +10,11 @@ Template.personEdit.events({
             mobile: t.find('[name=mobile]').val(),
             sex: t.find('[name=sex]').val(),
             loc: t.find('[name=current_location]').val(),
-            bthLoc: t.find('[name=borth_location]').val(),
             birth: t.find('[name=birth_period]').val(),
             status: t.find('[name=status]').val(),
             timeIn: t.find('[name=time_input]').val(),
             capIn: t.find('[name=money_input]').val(),
             career: t.find('[name=career_area]').val(),
-            tgtArea: t.find('[name=target_area]').val(),
             tag: gostart.getCheckboxGroupValues(t.find('[name=my_tag]')),
             frndTag: gostart.getCheckboxGroupValues(t.find('[name=friend_tag]')),
             intro: t.find('[name=intro]').val(),
@@ -44,6 +42,5 @@ Template.personEdit.onRendered(function() {
         t.$('#money_input').val(this.data.capIn);
         t.$('#career_area').val(this.data.career);
         gostart.setCheckboxGroup(t.$('[name=my_tag]'), this.data.tag);
-        gostart.setCheckboxGroup(t.$('[name=friend_tag]'), this.data.frndTag);
     }
 );

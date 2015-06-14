@@ -25,8 +25,7 @@
     <div>
         <select name="birth_period" id="birth_period">
             <option value="">出生年代...</option>
-            <option value="50前">50前</option>
-            <option value="50后">50后</option>
+            <option value="60前">60前</option>
             <option value="60后">60后</option>
             <option value="70后">70后</option>
             <option value="80后">80后</option>
@@ -38,7 +37,42 @@
         <input type="text" name="current_location" id="current_location" placeholder="现居住区域" value="{{loc}}"/>
     </div>
     <div>
-        <input type="text" name="borth_location" id="borth_location" placeholder="籍贯" value="{{bthLoc}}"/>
+        <select name="career_area" id="career_area">
+            <option value="">所在行业...</option>
+            <option value="互联网">互联网</option>
+            <option value="通信">通信</option>
+            <option value="金融">金融</option>
+            <option value="消费品">消费品</option>
+            <option value="学生">学生</option>
+            <option value="教育培训">教育培训</option>
+            <option value="生活服务业">生活服务业</option>
+            <option value="消费品">消费品</option>
+            <option value="医疗卫生">医疗卫生</option>
+            <option value="政府组织">政府组织</option>
+            <option value="工商贸易">工商贸易</option>
+            <option value="其他">其他</option>
+        </select>
+    </div>
+    <div>
+        <p class="bg-primary">个人标签</p>
+        <div class="container">
+            <div class="row">
+            <input type="checkbox" name="my_tag" id="my_tag_1" value="技术"/>技术
+            <input type="checkbox" name="my_tag" id="my_tag_2" value="运营"/>运营
+            <input type="checkbox" name="my_tag" id="my_tag_3" value="产品"/>产品
+            </div>
+            <div class="row">
+            <input type="checkbox" name="my_tag" id="my_tag_4" value="销售"/>销售
+            <input type="checkbox" name="my_tag" id="my_tag_5" value="渠道"/>渠道
+            </div>
+            <div class="row">
+            <input type="checkbox" name="my_tag" id="my_tag_6" value="合伙人"/>合伙人
+            <input type="checkbox" name="my_tag" id="my_tag_7" value="投资人"/>投资人
+            </div>
+            <div class="row">
+            <input type="checkbox" name="my_tag" id="my_tag_8" value="其他"/>其他
+            </div>
+        </div>
     </div>
     <p class="bg-primary">创投对接</p>
     <div>
@@ -49,7 +83,6 @@
             <option value="有项目想法">有项目想法</option>
             <option value="投资人">投资人</option>
             <option value="媒体人">媒体人</option>
-            <option value="技术人员">技术人员</option>
             <option value="其他">其他</option>
         </select>
     </div>
@@ -72,49 +105,8 @@
             <option value="其他">其他</option>
         </select>
     </div>
-    <div>
-        <select name="career_area" id="career_area">
-            <option value="">个人所在行业...</option>
-            <option value="互联网">互联网</option>
-            <option value="通信">通信</option>
-            <option value="金融">金融</option>
-            <option value="消费品">消费品</option>
-            <option value="学生">学生</option>
-            <option value="教育培训">教育培训</option>
-            <option value="生活服务业">生活服务业</option>
-            <option value="消费品">消费品</option>
-            <option value="医疗卫生">医疗卫生</option>
-            <option value="政府组织">政府组织</option>
-            <option value="工商贸易">工商贸易</option>
-            <option value="其他">其他</option>
-        </select>
-    </div>
-    <div>
-        <input type="text" name="target_area" id="target_area" placeholder="创业方向" value="{{tgtArea}}"/>
-    </div>
     <p class="bg-primary">其他信息</p>
-    <div>
-        <label class="control-label" for="title">个人标签</label>
-        <div class="container">
-            <div class="row">
-            <input type="checkbox" name="my_tag" id="my_tag_1" value="技术"/>技术
-            <input type="checkbox" name="my_tag" id="my_tag_2" value="运营"/>运营
-            <input type="checkbox" name="my_tag" id="my_tag_3" value="产品"/>产品
-            </div>
-            <div class="row">
-            <input type="checkbox" name="my_tag" id="my_tag_4" value="销售"/>销售
-            <input type="checkbox" name="my_tag" id="my_tag_5" value="渠道"/>渠道
-            </div>
-            <div class="row">
-            <input type="checkbox" name="my_tag" id="my_tag_6" value="合伙人"/>合伙人
-            <input type="checkbox" name="my_tag" id="my_tag_7" value="投资人"/>投资人
-            </div>
-            <div class="row">
-            <input type="checkbox" name="my_tag" id="my_tag_8" value="其他"/>其他
-            </div>
-        </div>
-    </div>
-    <div>
+    <!--div>
         <label class="control-label" for="title">择友标签</label>
         <div class="container">
             <div class="row">
@@ -134,7 +126,7 @@
             <input type="checkbox" name="friend_tag" id="friend_tag_8" value="其他"/>其他
             </div>
         </div>
-    </div>
+    </div-->
     <div>
         <textarea name="intro" id="intro" placeholder="自我简介">{{intro}}</textarea>
     </div>
