@@ -1,6 +1,6 @@
 
 Template.askList.helpers({
         asks: function() {
-            return Asks.find();
+            return Asks.find({}, {sort:{created: -1}});
         }
 })
