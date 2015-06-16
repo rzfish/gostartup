@@ -9,7 +9,8 @@ Template.askEdit.events({
             tag: t.find('[name=tag]').val(),
             detail: t.find('[name=detail]').val(),
         };
-
+        alert("hello");
+        return;
         var id = t.find('[name=id]').val();
         if(id == "") {  //new ask
             ask.author = Meteor.user().username;

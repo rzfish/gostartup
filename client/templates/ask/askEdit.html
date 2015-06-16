@@ -1,12 +1,12 @@
 <template name="askEdit">
-    <form class="main form page" method="POST">
+    <form class="main form" method="POST">
     <input type="hidden" name="id" id="id" value="{{_id}}"/>
     <div>
-        <input type="text" name="title" id="title" placeholder="标题" value="{{title}}"/>
+        <input type="text" name="title" id="title" value="{{title}}" required/>
     </div>
     <div>
-    <label >标签</label>
-    <select name="tag" id="tag">
+    <label>标签</label>
+    <select name="tag" id="tag" required="required">
         <option value="">求助标签...</option>
         <option value="">找人...</option>
         <option value="找人-技术"> － 技术</option>
@@ -24,22 +24,19 @@
     </select>
     </div>
     <div>
-        <textarea name="detail" id="detail" placeholder="详细信息" rows="5" value="{{detail}}" style="width:90%;"></textarea>
+        <textarea name="detail" id="detail" pattern=".{10,500}" placeholder="详细信息，10个字以上" rows="5" value="{{detail}}" style="width:90%;"></textarea>
     </div>
-    <input type="submit" value="提交"/>
+    <input type="submit" value="保存"/>
     </form>
-    <script type="text/javascript">
-        // var tag = " － " + {{tag}};
-        // gostart.setCheckboxGroup($('[name=tag]'), '{{tag}}');
-    </script>
 </template>
 
 <template name="askNew">
-    <h4>新建求助信息</h4>
+    <h3>新建求助</h3>
+    <small>&nbsp;&nbsp;每个求助事项，请单独填一条记录、便于管理</small>
     {{>askEdit}}
 </template>
 
 <template name="askUpdate">
-    <h4>编辑求助信息</h4>
+    <h4>编辑求助</h4>
     {{>askEdit}}
 </template>

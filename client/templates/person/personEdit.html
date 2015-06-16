@@ -1,5 +1,5 @@
 <template name="personEdit">
-    <form class="main form page" id="person_edit" method="POST">
+    <form class="main form" id="person_edit" method="POST">
     <input type="hidden" name="id" value="{{_id}}"/>
     <p class="bg-primary">基本信息</p>
     <div>
@@ -105,30 +105,9 @@
             <option value="其他">其他</option>
         </select>
     </div>
-    <p class="bg-primary">其他信息</p>
-    <!--div>
-        <label class="control-label" for="title">择友标签</label>
-        <div class="container">
-            <div class="row">
-            <input type="checkbox" name="friend_tag" id="friend_tag_1" value="技术"/>技术
-            <input type="checkbox" name="friend_tag" id="friend_tag_2" value="运营"/>运营
-            <input type="checkbox" name="friend_tag" id="friend_tag_3" value="产品"/>产品
-            </div>
-            <div class="row">
-            <input type="checkbox" name="friend_tag" id="friend_tag_4" value="销售"/>销售
-            <input type="checkbox" name="friend_tag" id="friend_tag_5" value="渠道"/>渠道
-            </div>
-            <div class="row">
-            <input type="checkbox" name="friend_tag" id="friend_tag_6" value="合伙人"/>合伙人
-            <input type="checkbox" name="friend_tag" id="friend_tag_7" value="投资人"/>投资人
-            </div>
-            <div class="row">
-            <input type="checkbox" name="friend_tag" id="friend_tag_8" value="其他"/>其他
-            </div>
-        </div>
-    </div-->
+    <p class="bg-primary">自我简介</p>
     <div>
-        <textarea name="intro" id="intro" placeholder="自我简介">{{intro}}</textarea>
+        <textarea name="intro" id="intro" style="width:90%;" rows="5" pattern=".{5,200}" placeholder="自我简介，至少5个字">{{intro}}</textarea>
     </div>
     <div>
         <input type="submit" value="保存" class="btn btn-primary"/>
@@ -138,13 +117,13 @@
 
 <template name="personNew">
     <div>
-        <h4>完善个人信息</h4>
+        <h3>完善个人信息</h3>
     </div>
     {{>personEdit}}
 </template>
 
 <template name="personUpdate">
-    <h4>修改个人信息</h4>
+    <h3>修改个人信息</h3>
     {{>personEdit}}
 </template>
 
