@@ -13,7 +13,7 @@ Template.prodEdit.events({
             painLvl: t.find('[name=pain_level]').val(),
             pnToMe: t.find('[name=pain_to_me]').val(),
             special: t.find('[name=special]').val(),
-            advtg: t.find('[name=advantage]').val(),
+            //advtg: t.find('[name=advantage]').val(),
         };
 
         var id = t.find('[name=id]').val();

@@ -3,6 +3,10 @@ Template.personEdit.events({
     'submit #person_edit' : function(e) {
         e.preventDefault();
         var t = $(e.target);
+        var need_invest = gostart.getCheckboxGroupValues(t.find('[name=need_invest]'));
+        if (need_invest == "无") {
+            need_invest = "否";
+        }
         var person = {
             name: t.find('[name=name]').val(),
             wxid: t.find('[name=weixinId]').val(),
@@ -17,6 +21,7 @@ Template.personEdit.events({
             career: t.find('[name=career_area]').val(),
             tag: gostart.getCheckboxGroupValues(t.find('[name=my_tag]')),
             frndTag: gostart.getCheckboxGroupValues(t.find('[name=friend_tag]')),
+            needInvest: need_invest,
             intro: t.find('[name=intro]').val(),
         };
 
@@ -42,5 +47,6 @@ Template.personEdit.onRendered(function() {
         t.$('#money_input').val(this.data.capIn);
         t.$('#career_area').val(this.data.career);
         gostart.setCheckboxGroup(t.$('[name=my_tag]'), this.data.tag);
+        gostart.setCheckboxGroup(t.$('[name=need_invest]'), this.data.needInvest);
     }
 );

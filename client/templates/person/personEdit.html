@@ -34,7 +34,7 @@
         </select>
     </div>
     <div>
-        <input type="text" name="current_location" id="current_location" placeholder="现居住区域" value="{{loc}}"/>
+        <input type="text" name="current_location" id="current_location" placeholder="居住省市" value="{{loc}}"/>
     </div>
     <div>
         <select name="career_area" id="career_area">
@@ -57,24 +57,31 @@
         <p class="bg-primary">个人标签</p>
         <div class="container">
             <div class="row">
-            <input type="checkbox" name="my_tag" id="my_tag_1" value="技术"/>技术
-            <input type="checkbox" name="my_tag" id="my_tag_2" value="运营"/>运营
-            <input type="checkbox" name="my_tag" id="my_tag_3" value="产品"/>产品
+            <input type="checkbox" name="my_tag" id="my_tag_1" value="技术"/> 技术 &nbsp;
+            <input type="checkbox" name="my_tag" id="my_tag_2" value="运营"/> 运营 &nbsp;
+            <input type="checkbox" name="my_tag" id="my_tag_3" value="产品"/> 产品 &nbsp;
             </div>
             <div class="row">
-            <input type="checkbox" name="my_tag" id="my_tag_4" value="销售"/>销售
-            <input type="checkbox" name="my_tag" id="my_tag_5" value="渠道"/>渠道
+            <input type="checkbox" name="my_tag" id="my_tag_4" value="销售"/> 销售 &nbsp;
+            <input type="checkbox" name="my_tag" id="my_tag_5" value="渠道"/> 渠道 &nbsp;
             </div>
             <div class="row">
-            <input type="checkbox" name="my_tag" id="my_tag_6" value="合伙人"/>合伙人
-            <input type="checkbox" name="my_tag" id="my_tag_7" value="投资人"/>投资人
+            <input type="checkbox" name="my_tag" id="my_tag_6" value="合伙人"/> 合伙人 &nbsp;
+            <input type="checkbox" name="my_tag" id="my_tag_7" value="投资人"/> 投资人 &nbsp;
             </div>
             <div class="row">
-            <input type="checkbox" name="my_tag" id="my_tag_8" value="其他"/>其他
+            <input type="checkbox" name="my_tag" id="my_tag_8" value="其他"/> 其他 &nbsp;
             </div>
         </div>
     </div>
+    <p class="bg-primary">自我简介</p>
+    <div>
+        <textarea name="intro" id="intro" style="width:90%;" rows="5" pattern=".{5,200}" placeholder="自我简介，至少5个字">{{intro}}</textarea>
+    </div>
     <p class="bg-primary">创投对接</p>
+    <div>
+        我想请创业狗帮助找投资 &nbsp;<input type="checkbox" name="need_invest" id="need_invest" value="是"/>
+    </div>
     <div>
         <select name="status" id="status">
             <option value="">目前状态...</option>
@@ -105,10 +112,7 @@
             <option value="其他">其他</option>
         </select>
     </div>
-    <p class="bg-primary">自我简介</p>
-    <div>
-        <textarea name="intro" id="intro" style="width:90%;" rows="5" pattern=".{5,200}" placeholder="自我简介，至少5个字">{{intro}}</textarea>
-    </div>
+    <p class="bg-primary">&nbsp;</p>
     <div>
         <input type="submit" value="保存" class="btn btn-primary"/>
     </div>
