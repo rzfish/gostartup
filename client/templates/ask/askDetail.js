@@ -3,7 +3,8 @@ Template.askDetail.events({
     'click #a_reply' : function(e) {
         e.preventDefault();
         t = $(e.target);
-        alert("debug");
+        var div = $('#div_reply');
+        div.toggleClass("hidden");
     },
     'click #a_del' : function(e) {
         e.preventDefault();
@@ -12,10 +13,22 @@ Template.askDetail.events({
             Asks.remove({_id: this._id});
             Router.go('askList');
         }
-    }
+    },
+    'submit form' : function(e) {
+        e.preventDefault();
+        t = $(e.target);
+        var rep = {
+            comment: t.find('[name=comment]').val(),
+        };
+
+        rep.author = Meteor.user().username;
+        rep.created = gostart.getTimeStr();
+        rep.updated = rep.created;
+        rep.askId = this._id;
+        Replies.insert(rep);
+        $("#div_reply").toggleClass("hidden");
+    },
 });
 
-Template.askEdit.onRendered(function() {
-        this.$('#tag').val(this.data.tag);
-    }
-);
+Template.askDetail.helpers({
+});

@@ -1,13 +1,22 @@
 <template name="askDetail">
+    {{#with ask}}
     <h3 class="bg-primary">
         {{title}}
     </h3>
     <div><small>由 {{author}} 于 {{created}} 创建</small></div>
     <p class="bg-info">标签: {{tag}}</p>
-    <pre>
-        {{detail}}
-    </pre>
+    <pre>{{detail}}</pre>
 
+    <div id="div_reply" class="hidden">
+        <form class="main from">
+            <input type="hidden" name="ask_id" id="ask_id" value="{{_id}}"/>
+            <textarea name="comment" id="comment" placeholder="请在这里发表评论" style="width:90%"></textarea>
+            <div class="row">
+                <div class="col-xs-5">&nbsp;</div>
+                <div class="col-xs-2"><input type="submit" value="保存"/></div>
+            </div>
+        </form>
+    </div>
     <div class="row">
         <div class="col-xs-5">&nbsp;</div>
         <div class="col-xs-2"><a href="#" id="a_reply">回复</a></div>
@@ -16,4 +25,9 @@
         <div class="col-xs-2"><a href="/ask/update/{{_id}}">编辑</a></div>
         {{/if}}
     </div>
+    {{/with}}
+    {{#each replies}}
+    <p class="bg-info" style="margin:0px;">{{author}} @ {{created}}</p>
+    <pre class="main" style="padding:2px;"> - {{comment}}</pre>
+    {{/each}}
 </template>
