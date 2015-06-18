@@ -31,4 +31,7 @@ Template.askDetail.events({
 });
 
 Template.askDetail.helpers({
+  ownAsk: function() {
+    return this.author == Meteor.user().username;
+  },
 });
