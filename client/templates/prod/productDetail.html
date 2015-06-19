@@ -12,7 +12,8 @@
     <div>这个痛点和你有什么联系：<pre>{{pnToMe}}</pre></div>
     <p class="bg-primary">产品特色</p>
     <div><pre>{{special}}</pre></div>
-    <p class="bg-primary">&nbsp;</p>
-    <button class="btn btn-primary" id="btn_update">修改</button>
-    <button class="btn btn-primary" id="btn_del">删除</button>
+    {{#if owns}}
+        <button class="btn btn-primary" id="btn_update">修改</button>
+        <button class="btn btn-primary" id="btn_del">删除</button>
+    {{/if}}
 </template>

@@ -20,6 +20,8 @@
     <div>目前状态：{{status}}</div>
     <div>时间投入：{{timeIn}}</div>
     <div>资金投入：{{capIn}}</div>
-    <p class="bg-primary">&nbsp;</p>
-    <button class="btn btn-primary" id="btn_update">修改</button>
+
+    {{#if owns}}
+        <button class="btn btn-primary" id="btn_update">修改</button>
+    {{/if}}
 </template>

@@ -27,10 +27,10 @@ Template.personEdit.events({
 
         id = t.find('[name=id]').val();
         if(id.length > 0) {
-            person._id = id;
             Persons.update({_id: id}, person);
-
         } else {
+            person._id = Meteor.userId();
+            alert(person._id);
             Persons.insert(person);
         }
 
