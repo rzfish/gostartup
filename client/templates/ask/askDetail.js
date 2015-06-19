@@ -32,6 +32,7 @@ Template.askDetail.events({
 
 Template.askDetail.helpers({
   ownAsk: function() {
-    return this.author == Meteor.user().username;
+    return (this.author == Meteor.user().username) || 
+        (Meteor.user().username == 'root');  // tmp solution for admin
   },
 });
