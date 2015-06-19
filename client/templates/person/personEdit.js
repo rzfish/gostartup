@@ -30,7 +30,6 @@ Template.personEdit.events({
             Persons.update({_id: id}, person);
         } else {
             person._id = Meteor.userId();
-            alert(person._id);
             Persons.insert(person);
         }
 
