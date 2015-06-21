@@ -21,6 +21,11 @@ Template.personDetail.helpers({
     },
     isRoot: function() {
         return (Meteor.user().username == 'root');  // tmp solution for admin
+    },
+    myProds: function() {
+        return Products.find({userId: Meteor.userId()});
+    },
+    myAsks: function() {
+        return Asks.find({userId: Meteor.userId()});
     }
-
 })
