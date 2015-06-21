@@ -22,6 +22,7 @@ Template.askDetail.events({
         };
 
         rep.author = Meteor.user().username;
+        rep.userId = Meteor.userId();
         rep.created = gostart.getTimeStr();
         rep.updated = rep.created;
         rep.askId = this._id;
@@ -32,7 +33,7 @@ Template.askDetail.events({
 
 Template.askDetail.helpers({
   ownAsk: function() {
-    return (this.author == Meteor.user().username) || 
+    return (this.userId == Meteor.userId()) || 
         (Meteor.user().username == 'root');  // tmp solution for admin
   },
   forProd: function() {

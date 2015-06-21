@@ -19,6 +19,7 @@ Template.prodEdit.events({
         var id = t.find('[name=id]').val();
         if(id == "") {  //new prod
             prod.author = Meteor.user().username;
+            prod.userId = Meteor.userId();
             prod.created = gostart.getTimeStr();
             prod.updated = prod.created;
             prod.reCnt = 0;

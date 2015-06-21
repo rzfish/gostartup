@@ -23,7 +23,7 @@ Template.prodDetail.events({
 
 Template.prodDetail.helpers({
   owns: function() {
-    return (this.author == Meteor.user().username) || 
+    return (this.userId == Meteor.userId()) || 
         (Meteor.user().username == 'root');  // tmp solution for admin
   },
   asks: function() {

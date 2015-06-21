@@ -13,6 +13,7 @@ Template.askEdit.events({
         var id = t.find('[name=id]').val();
         if(id == "") {  //new ask
             ask.author = Meteor.user().username;
+            ask.userId = Meteor.userId();
             ask.created = gostart.getTimeStr();
             ask.updated = ask.created;
             ask.reCnt = 0;
@@ -38,6 +39,6 @@ Template.askEdit.onRendered(function() {
 
 Template.askEdit.helpers({
     myProducts: function() {
-        return Products.find({author: Meteor.user().username});
+        return Products.find({userId: Meteor.userId()});
     },
 })
