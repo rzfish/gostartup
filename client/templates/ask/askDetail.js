@@ -35,4 +35,7 @@ Template.askDetail.helpers({
     return (this.author == Meteor.user().username) || 
         (Meteor.user().username == 'root');  // tmp solution for admin
   },
+  forProd: function() {
+    return Products.findOne({_id: this.prodId}, {title: 1})
+  }
 });

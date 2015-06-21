@@ -13,7 +13,13 @@
     <p class="bg-primary">产品特色</p>
     <div><pre>{{special}}</pre></div>
     {{#if owns}}
+        <button class="btn btn-primary" id="btn_ask">求助</button>
         <button class="btn btn-primary" id="btn_update">修改</button>
         <button class="btn btn-primary" id="btn_del">删除</button>
     {{/if}}
+    <hr/>
+    <p class="bg-primary">相关求助</p>
+    {{#each asks}}
+    <div><a href="/ask/detail/{{_id}}">{{title}}</a></div>
+    {{/each}}
 </template>

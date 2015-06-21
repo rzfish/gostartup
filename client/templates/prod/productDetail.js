@@ -13,7 +13,12 @@ Template.prodDetail.events({
             Products.remove({_id: this._id});
             Router.go('prodList');
         }
+    }, 
+    'click #btn_ask': function(e) {
+        Session.set('prodIdForNewAsk', this._id);
+        Router.go('askNew');
     }
+
 });
 
 Template.prodDetail.helpers({
@@ -21,6 +26,8 @@ Template.prodDetail.helpers({
     return (this.author == Meteor.user().username) || 
         (Meteor.user().username == 'root');  // tmp solution for admin
   },
-
+  asks: function() {
+    return Asks.find({prodId: this._id});
+  }
 })
 

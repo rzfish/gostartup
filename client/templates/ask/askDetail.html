@@ -5,6 +5,11 @@
     </h3>
     <div><small>由 {{author}} 于 {{created}} 创建</small></div>
     <p class="bg-info">标签: {{tag}}</p>
+    <div><label>相关产品：</label>
+    {{#with forProd}}
+    <a href="/product/detail/{{_id}}">{{title}}</a>
+    {{/with}}
+    </div>
     <pre>{{detail}}</pre>
 
     <div id="div_reply" class="hidden">

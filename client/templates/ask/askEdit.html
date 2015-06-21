@@ -23,6 +23,14 @@
     </select>*
     </div>
     <div>
+        <label>相关产品</label>
+        <select name="product" id="product">
+            {{#each myProducts}}
+            <option value="{{_id}}">{{title}}</option>        
+            {{/each}}
+        </select>
+    </div>
+    <div>
         <textarea name="detail" id="detail" pattern=".{10,500}" placeholder="详细信息，10个字以上" rows="5" value="{{detail}}" style="width:90%;"></textarea>
     </div>
     <input type="submit" value="保存"/>

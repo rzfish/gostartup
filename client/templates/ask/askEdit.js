@@ -8,6 +8,7 @@ Template.askEdit.events({
             title: t.find('[name=title]').val(),
             tag: t.find('[name=tag]').val(),
             detail: t.find('[name=detail]').val(),
+            prodId: t.find('[name=product]').val(),
         };
         var id = t.find('[name=id]').val();
         if(id == "") {  //new ask
@@ -26,6 +27,17 @@ Template.askEdit.events({
 });
 
 Template.askEdit.onRendered(function() {
+    if(this.data) {
         this.$('#tag').val(this.data.tag);
+        this.$('#product').val(this.data.prodId);
+    } else {
+        this.$('#product').val(Session.get('prodIdForNewAsk'));
+        Session.set('prodIdForNewAsk', null);
     }
-);
+});
+
+Template.askEdit.helpers({
+    myProducts: function() {
+        return Products.find({author: Meteor.user().username});
+    },
+})
