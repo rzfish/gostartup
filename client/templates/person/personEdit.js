@@ -13,7 +13,8 @@ Template.personEdit.events({
             mail: t.find('[name=email]').val(),
             mobile: t.find('[name=mobile]').val(),
             sex: t.find('[name=sex]').val(),
-            loc: t.find('[name=current_location]').val(),
+            loc: t.find('[name=s_prov]').val() + "-" + 
+                t.find('[name=s_city]').val(),
             birth: t.find('[name=birth_period]').val(),
             status: t.find('[name=status]').val(),
             timeIn: t.find('[name=time_input]').val(),
@@ -47,5 +48,8 @@ Template.personEdit.onRendered(function() {
         t.$('#career_area').val(this.data.career);
         gostart.setCheckboxGroup(t.$('[name=my_tag]'), this.data.tag);
         gostart.setCheckboxGroup(t.$('[name=need_invest]'), this.data.needInvest);
+        Cities.selOpts = ["现居住省份", "现居住市"];
+        Cities.initOpts = this.data.loc.split("-");
+        Cities.init();
     }
 );
