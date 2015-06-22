@@ -32,7 +32,7 @@
     </div>
     {{/with}}
     {{#each replies}}
-    <p class="bg-info" style="margin:0px;">{{author}} @ {{created}}</p>
+    <p class="bg-info" style="margin:0px;">{{author}} @ {{timeStr created}}</p>
     <pre class="main" style="padding:2px;"> - {{comment}}</pre>
     {{/each}}
 </template>

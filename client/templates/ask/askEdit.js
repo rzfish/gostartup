@@ -14,13 +14,13 @@ Template.askEdit.events({
         if(id == "") {  //new ask
             ask.author = Meteor.user().username;
             ask.userId = Meteor.userId();
-            ask.created = gostart.getTimeStr();
+            ask.created = $.now();
             ask.updated = ask.created;
             ask.reCnt = 0;
             ask.up = 0;
             Asks.insert(ask);
         } else {
-            ask.updated = gostart.getTimeStr();
+            ask.updated = $.now();
             Asks.update({_id: id}, {$set: ask});
         }
         Router.go('askList');
