@@ -3,13 +3,13 @@
     <input type="hidden" name="id" id="id" value="{{_id}}"/>
     <p class="bg-primary">基本信息</p>
     <div>
-        <input type="text" name="title" id="title" placeholder="产品名称" value="{{title}}" style="width:60%;" required="required"/>
+        <input type="text" name="title" id="title" placeholder="产品名称（必填）" value="{{title}}" style="width:60%;" required="required"/>
     </div>
     <div>
         <input type="text" name="tag" id="tag" placeholder="关键标签，用英文逗号分隔" value="{{tag}}" style="width:60%;"/>
     </div>
     <div>
-        <input type="text" name="short_intro" id="short_intro" placeholder="产品一句话简介,10个字以上" value="{{intro}}" style="width:90%;" required="required"/>
+        <input type="text" name="short_intro" id="short_intro" placeholder="产品一句话简介,（必填，10个字以上）" value="{{intro}}" style="width:90%;" required="required"/>
     </div>
     <div>
         <input type="text" name="site_url" id="site_url" placeholder="官网链接或微信公众号" value="{{url}}" style="width:60%;"/>

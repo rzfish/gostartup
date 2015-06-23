@@ -2,10 +2,9 @@
     <form class="main form" method="POST">
     <input type="hidden" name="id" id="id" value="{{_id}}"/>
     <div>
-        <input type="text" name="title" id="title" placeholder="标题" value="{{title}}" required="required"/>*
+        <input type="text" name="title" id="title" placeholder="标题（必填）" value="{{title}}" required="required" style="width:60%"/>
     </div>
     <div>
-    <label>标签</label>
     <select name="tag" id="tag" required="required">
         <option value="">求助标签...</option>
         <option value="">找人...</option>
@@ -20,18 +19,18 @@
         <option value="找钱-天使"> － 天使（10-100万）</option>
         <option value="找钱-众筹"> － 初创（100-500万）</option>
         <option value="找方向">找方向及其他</option>
-    </select>*
+    </select> （必选）
     </div>
     <div>
-        <label>相关产品</label>
         <select name="product" id="product">
+            <option value="">相关产品...</option>
             {{#each myProducts}}
             <option value="{{_id}}">{{title}}</option>        
             {{/each}}
-        </select>
+        </select> （必选）
     </div>
     <div>
-        <textarea name="detail" id="detail" pattern=".{10,500}" placeholder="详细信息，10个字以上" rows="5" value="{{detail}}" style="width:90%;"></textarea>
+        <textarea name="detail" id="detail" pattern=".{10,500}" placeholder="详细信息，（必填，10个字以上）" rows="5" value="{{detail}}" style="width:90%;"></textarea>
     </div>
     <input type="submit" value="保存"/>
     </form>
@@ -39,7 +38,7 @@
 
 <template name="askNew">
     <h3>新建求助</h3>
-    <small>&nbsp;&nbsp;每个求助事项，请单独填一条记录、便于管理</small>
+    <small>&nbsp;&nbsp;每个求助事项，请单独填一条记录、便于管理；新建求助前，请先“新建产品”和“完善个人信息”</small>
     {{>askEdit}}
 </template>
 
