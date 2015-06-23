@@ -3,9 +3,21 @@ Template.prodEdit.events({
     'submit form' : function(e) {
         e.preventDefault();
         t = $(e.target);
-
+        var tlt = t.find('[name=title]').val();
+        var dtl = t.find('[name=short_intro]').val();
+        var err_str = "";
+        if(tlt == ""){
+            err_str += " － 产品名称不能为空\n";
+        }
+        if(dtl.length < 10) {
+            err_str += " － 简介不能小于10个字\n";
+        }
+        if (err_str.length > 0) {
+            alert("请检查输入是否符合以下要求：\n" + err_str);
+            return;
+        }
         var prod = {
-            title: t.find('[name=title]').val(),
+            title: tlt,
             tag: t.find('[name=tag]').val(),
             intro: t.find('[name=short_intro]').val(),
             url: t.find('[name=site_url]').val(),

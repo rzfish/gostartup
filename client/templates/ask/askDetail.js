@@ -4,6 +4,7 @@ Template.askDetail.events({
         e.preventDefault();
         t = $(e.target);
         var div = $('#div_reply');
+        $("#ta_comment").val("");
         div.toggleClass("hidden");
     },
     'click #a_del' : function(e) {
@@ -17,13 +18,18 @@ Template.askDetail.events({
     'submit form' : function(e) {
         e.preventDefault();
         t = $(e.target);
+        content = t.find('[name=comment]').val();
+        if (content.length < 10) {
+            alert('回复内容不能小于10个字');
+            return;
+        }
         var rep = {
-            comment: t.find('[name=comment]').val(),
+            comment: content,
         };
 
         rep.author = Meteor.user().username;
         rep.userId = Meteor.userId();
-        rep.created = gostart.getTimeStr();
+        rep.created = $.now();
         rep.updated = rep.created;
         rep.askId = this._id;
         Replies.insert(rep);
