@@ -38,6 +38,7 @@ Template.prodEdit.events({
             prod.up = 0;
             Products.insert(prod);
         } else {
+            prod.updated = $.now();
             Products.update({_id: id}, {$set: prod});
         }
         Router.go('prodList');
