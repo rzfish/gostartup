@@ -3,7 +3,7 @@
     <input type="hidden" name="id" value="{{_id}}"/>
     <p class="bg-primary">基本信息</p>
     <div>
-        <input type="text" name="name" id="name" placeholder="真实姓名" width="4" value="{{name}}"/>
+        <input type="text" name="name" id="name" placeholder="真实姓名（必填）" width="4" value="{{name}}"/>
     </div>
     <div>
         <input type="text" name="weixinId" id="weixinId" placeholder="微信号" alt="微信号" value="{{wxid}}"/>
@@ -83,7 +83,7 @@
     </div>
     <p class="bg-primary">创投对接</p>
     <div>
-        我想请创业狗帮助找投资 &nbsp;<input type="checkbox" name="need_invest" id="need_invest" value="是"/>
+        我想请创业狗帮助找投资 &nbsp;<input type="checkbox" name="need_invest" id="need_invest" value="是"/><small>（如果勾选，必需完善以下三项内容）</small>
     </div>
     <div>
         <select name="status" id="status">

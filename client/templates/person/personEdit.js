@@ -3,12 +3,29 @@ Template.personEdit.events({
     'submit #person_edit' : function(e) {
         e.preventDefault();
         var t = $(e.target);
+        var nm = t.find('[name=name]').val();
+        var stat = t.find('[name=status]').val();
+        var ti = t.find('[name=time_input]').val();
+        var ci = t.find('[name=money_input]').val();
+        var err_str = "";
+        if(nm == "") {
+            err_str += " － 必须填写真实姓名\n";
+        }
         var need_invest = gostart.getCheckboxGroupValues(t.find('[name=need_invest]'));
         if (need_invest == "无") {
             need_invest = "否";
+        } else {
+            if (stat == "" || ti == "" || ci == "") {
+                err_str += " － 需要投资时必须完整填写创投对接信息";
+            }
+        }
+
+        if(err_str.length > 0) {
+            alert("请检查输入是否符合以下要求：\n" + err_str);
+            return;
         }
         var person = {
-            name: t.find('[name=name]').val(),
+            name: nm,
             wxid: t.find('[name=weixinId]').val(),
             mail: t.find('[name=email]').val(),
             mobile: t.find('[name=mobile]').val(),
@@ -16,9 +33,9 @@ Template.personEdit.events({
             loc: t.find('[name=s_prov]').val() + "-" + 
                 t.find('[name=s_city]').val(),
             birth: t.find('[name=birth_period]').val(),
-            status: t.find('[name=status]').val(),
-            timeIn: t.find('[name=time_input]').val(),
-            capIn: t.find('[name=money_input]').val(),
+            status: stat,
+            timeIn: ti,
+            capIn: ci,
             career: t.find('[name=career_area]').val(),
             tag: gostart.getCheckboxGroupValues(t.find('[name=my_tag]')),
             frndTag: gostart.getCheckboxGroupValues(t.find('[name=friend_tag]')),
