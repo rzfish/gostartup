@@ -50,6 +50,13 @@ Template.askEdit.events({
 });
 
 Template.askEdit.onRendered(function() {
+    var pcnt = Products.find({userId:Meteor.userId()}).count();
+    if(pcnt <= 0) {
+        alert("新建求助前必须先新建产品");
+        Router.go("prodNew");
+        return;
+    }
+
     if(this.data) {
         this.$('#tag').val(this.data.tag);
         this.$('#product').val(this.data.prodId);
