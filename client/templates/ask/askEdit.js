@@ -39,6 +39,7 @@ Template.askEdit.events({
             ask.created = $.now();
             ask.updated = ask.created;
             ask.reCnt = 0;
+            ask.pv = 0;
             ask.up = 0;
             Asks.insert(ask);
         } else {

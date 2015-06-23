@@ -33,6 +33,7 @@ Template.askDetail.events({
         rep.updated = rep.created;
         rep.askId = this._id;
         Replies.insert(rep);
+        Asks.update({_id: this._id}, {$inc: {reCnt: 1}});
         $("#div_reply").toggleClass("hidden");
     },
 });
