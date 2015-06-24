@@ -4,13 +4,21 @@ Template.personEdit.events({
         e.preventDefault();
         var t = $(e.target);
         var nm = t.find('[name=name]').val();
+        var email = t.find('[name=email]').val();
+        var wx = t.find('[name=weixinId]').val();
+        var phone = t.find('[name=mobile]').val();
         var stat = t.find('[name=status]').val();
         var ti = t.find('[name=time_input]').val();
         var ci = t.find('[name=money_input]').val();
         var err_str = "";
-        if(nm == "") {
-            err_str += " － 必须填写真实姓名\n";
+        if(nm == "") { err_str += " － 必须填写真实姓名\n"; }
+        if(email == "") {
+            err_str += " － 必须填写email\n";
+        } else if (email.match(/[^.]+@[^.]+\..*/) == null){
+            err_str += " － email格式不正确\n";
         }
+        if(wx == "") { err_str += " － 必须填写微信号\n";}
+        if(phone == "") { err_str += " － 必须填写手机号\n"; }
         var need_invest = gostart.getCheckboxGroupValues(t.find('[name=need_invest]'));
         if (need_invest == "无") {
             need_invest = "否";
@@ -26,9 +34,9 @@ Template.personEdit.events({
         }
         var person = {
             name: nm,
-            wxid: t.find('[name=weixinId]').val(),
-            mail: t.find('[name=email]').val(),
-            mobile: t.find('[name=mobile]').val(),
+            wxid: wx,
+            mail: email,
+            mobile: phone,
             sex: t.find('[name=sex]').val(),
             loc: t.find('[name=s_prov]').val() + "-" + 
                 t.find('[name=s_city]').val(),
