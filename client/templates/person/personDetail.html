@@ -29,8 +29,8 @@
     {{/if}}
     <hr/>
     <p class="bg-primary">我的产品</p>
-    {{#each myProds}}
-        <div><a href="/product/detail/{{_id}}">{{title}}</a></div>
+    {{#each prods}}
+        {{>prodListItem}}
     {{/each}}
     <p class="bg-primary">我的求助</p>
     {{#each myAsks}}

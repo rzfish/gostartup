@@ -22,7 +22,7 @@ Template.personDetail.helpers({
     isRoot: function() {
         return (Meteor.user().username == 'root');  // tmp solution for admin
     },
-    myProds: function() {
+    prods: function() {
         return Products.find({userId: this._id});
     },
     myAsks: function() {

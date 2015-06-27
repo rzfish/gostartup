@@ -1,6 +1,24 @@
 <template name="prodList">
     <h4>产品列表</h4>
-    {{#each prods}}
-        <div class="bg-info"><a href="/product/detail/{{_id}}"><b>{{title}}</b></a> <small>- {{author}}于{{timeDiff created}}创建，最后修改于{{timeDiff updated}}</small></div>
-    {{/each}}
+    <div class="container" id="prod_list">
+        <div class="row bg-primary">
+            <div class="col-xs-4">产品名称</div>
+            <div class="col-xs-2">发起人</div>
+            <div class="col-xs-2">创建于</div>
+            <div class="col-xs-2">更新于</div>
+        </div>
+        {{#each prods}}
+            {{>prodListItem}}
+        {{/each}}
+    </div>
+
+</template>
+
+<template name="prodListItem">
+    <div class="row">
+        <div class="col-xs-4"><a href="/product/detail/{{_id}}"><b>{{title}}</b></a></div>
+        <div class="col-xs-2">{{author}}</div>
+        <div class="col-xs-2">{{timeDiff created}}</div>
+        <div class="col-xs-2">{{timeDiff updated}}</div>
+    </div>
 </template>

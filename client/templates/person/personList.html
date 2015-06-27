@@ -1,10 +1,29 @@
 <template name="personList">
     <h4>个人列表</h4>
-    <div>
-        {{#each persons}}
-            <div>
-            <a href="{{_id}}">{{name}}</a>
+    <div id="person_list">
+        <div class="container">
+            <div class="row bg-primary">
+                <div class="col-xs-2">姓名</div>
+                <div class="col-xs-2">微信</div>
+                <div class="col-xs-2">标签</div>
+                <div class="col-xs-2">状态</div>
+                <div class="col-xs-2">加入时间</div>
             </div>
-        {{/each}}
+            {{#each persons}}
+                {{>personListItem}}
+            {{/each}}
+        </div>
+    </div>
+</template>
+
+<template name="personListItem">
+    <div class="row">
+        <div class="col-xs-2">
+            <a href="{{_id}}">{{name}}</a>
+        </div>
+        <div class="col-xs-2">{{wxid}}</div>
+        <div class="col-xs-2">{{tag}}</div>
+        <div class="col-xs-2">{{status}}</div>
+        <div class="col-xs-2">{{timeDiff created}}</div>
     </div>
 </template>

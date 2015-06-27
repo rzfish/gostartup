@@ -56,6 +56,8 @@ Template.personEdit.events({
             Persons.update({_id: id}, person);
         } else {
             person._id = Meteor.userId();
+            person.created = $.now();
+            person.lastV = person.created;
             Persons.insert(person);
         }
 

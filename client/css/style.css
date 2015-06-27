@@ -20,6 +20,10 @@ body {
   width: 100%;
 }
 
+.bg-light {
+  background-color:rgb(249, 249, 249);
+}
+
 .navbar {
   margin-bottom: 10px; }
   /* line 32, ../sass/style.scss */
