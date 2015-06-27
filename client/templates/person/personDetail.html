@@ -29,11 +29,13 @@
     {{/if}}
     <hr/>
     <p class="bg-primary">我的产品</p>
-    {{#each prods}}
-        {{>prodListItem}}
-    {{/each}}
+    {{#with data}}
+        {{#if prods}}
+        {{>prodTable}}
+        {{/if}}
     <p class="bg-primary">我的求助</p>
-    {{#each myAsks}}
+    {{#each asks}}
         <div><a href="/ask/detail/{{_id}}">{{title}}</a></div>
     {{/each}}
+    {{/with}}
 </template>

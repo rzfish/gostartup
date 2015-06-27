@@ -1,5 +1,11 @@
 <template name="prodList">
     <h4>产品列表</h4>
+    {{#with data}}
+        {{>prodTable}}
+    {{/with}}
+</template>
+
+<template name="prodTable">
     <div class="container" id="prod_list">
         <div class="row bg-primary">
             <div class="col-xs-4">产品名称</div>
@@ -11,7 +17,6 @@
             {{>prodListItem}}
         {{/each}}
     </div>
-
 </template>
 
 <template name="prodListItem">

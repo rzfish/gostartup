@@ -22,10 +22,14 @@ Template.personDetail.helpers({
     isRoot: function() {
         return (Meteor.user().username == 'root');  // tmp solution for admin
     },
-    prods: function() {
-        return Products.find({userId: this._id});
+    data: function() { 
+        var prod = Products.find({userId: this._id});
+        if (prod.count() == 0) {
+            prod = null;
+        }
+        return {
+            prods: prod,
+            asks: Asks.find({userId: this._id}),
+        };
     },
-    myAsks: function() {
-        return Asks.find({userId: this._id});
-    }
 })
