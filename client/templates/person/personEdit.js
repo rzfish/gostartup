@@ -53,16 +53,22 @@ Template.personEdit.events({
 
         var id = t.find('[name=id]').val();
         if(id.length > 0) {
-            Persons.update({_id: id}, person);
+            Persons.update({_id: id}, {$set:person});
             gostart.actLog('upPsn', id);
         } else {
-            person._id = Meteor.userId();
+            id = Meteor.userId();
+            person._id = id;
             person.created = $.now();
             person.lastV = person.created;
             Persons.insert(person);
             gostart.actLog('crtPsn', id);
         }
 
+        // update user profile
+        if(id == Meteor.userId()){
+            var pf = {name: person.name};
+            Meteor.users.update({_id:Meteor.userId()}, {$set:{profile: pf}});
+        }
         Router.go('personList');
     },
 });

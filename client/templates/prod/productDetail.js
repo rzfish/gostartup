@@ -31,7 +31,7 @@ Template.prodDetail.helpers({
   }
 });
 
-Teamplate.prod.Detail.onRendered(function(){
+Template.prodDetail.onRendered(function(){
     gostart.actLog('vProd', this._id, true);
-})
+});
 
