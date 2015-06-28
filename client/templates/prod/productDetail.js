@@ -29,5 +29,9 @@ Template.prodDetail.helpers({
   asks: function() {
     return Asks.find({prodId: this._id});
   }
+});
+
+Teamplate.prod.Detail.onRendered({
+    gostart.actLog('vProd', this._id, true);
 })
 

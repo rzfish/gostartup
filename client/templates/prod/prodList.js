@@ -5,6 +5,6 @@ Template.prodList.helpers({
         }
 });
 
-Template.prodList.onRendered(function() {
+Template.prodTable.onRendered(function() {
     gostart.strippedRow("prod_list", "bg-light");
 });

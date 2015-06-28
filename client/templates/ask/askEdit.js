@@ -32,6 +32,7 @@ Template.askEdit.events({
             detail: dtl,
             prodId: t.find('[name=product]').val(),
         };
+
         var id = t.find('[name=id]').val();
         if(id == "") {  //new ask
             ask.author = Meteor.user().username;
@@ -42,10 +43,15 @@ Template.askEdit.events({
             ask.pv = 0;
             ask.up = 0;
             Asks.insert(ask);
+            gostart.actLog('crtAsk', id, false)
+            log.o = "crAsk";
         } else {
             ask.updated = $.now();
+            log.i = id;
             Asks.update({_id: id}, {$set: ask});
+            gostart.actLog('upAsk', id, false)
         }
+
         Router.go('askList');
     },
 });

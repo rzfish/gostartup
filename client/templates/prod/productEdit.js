@@ -16,6 +16,7 @@ Template.prodEdit.events({
             alert("请检查输入是否符合以下要求：\n" + err_str);
             return;
         }
+
         var prod = {
             title: tlt,
             tag: t.find('[name=tag]').val(),
@@ -28,6 +29,12 @@ Template.prodEdit.events({
             //advtg: t.find('[name=advantage]').val(),
         };
 
+        var log = {
+            t: $.now(),
+            u: Meteor.userId(),
+            o: "upPrd",
+            i: "",
+        }
         var id = t.find('[name=id]').val();
         if(id == "") {  //new prod
             prod.author = Meteor.user().username;
@@ -37,8 +44,10 @@ Template.prodEdit.events({
             prod.reCnt = 0;
             prod.up = 0;
             Products.insert(prod);
+            gostart.actLog('crProd', id, false);
         } else {
             prod.updated = $.now();
+            gostart.actLog('upProd', id, false);
             Products.update({_id: id}, {$set: prod});
         }
         Router.go('prodList');

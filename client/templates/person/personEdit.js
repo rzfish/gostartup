@@ -51,14 +51,16 @@ Template.personEdit.events({
             intro: t.find('[name=intro]').val(),
         };
 
-        id = t.find('[name=id]').val();
+        var id = t.find('[name=id]').val();
         if(id.length > 0) {
             Persons.update({_id: id}, person);
+            gostart.actLog('upPsn', id);
         } else {
             person._id = Meteor.userId();
             person.created = $.now();
             person.lastV = person.created;
             Persons.insert(person);
+            gostart.actLog('crtPsn', id);
         }
 
         Router.go('personList');

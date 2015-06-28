@@ -43,7 +43,12 @@ Template.askDetail.helpers({
     return (this.userId == Meteor.userId()) || 
         (Meteor.user().username == 'root');  // tmp solution for admin
   },
+  
   forProd: function() {
     return Products.findOne({_id: this.prodId}, {title: 1})
   }
+});
+
+Template.askDetail.onRendered(function(){
+    gostart.actLog("vAsk", this.data.ask._id, true);
 });
