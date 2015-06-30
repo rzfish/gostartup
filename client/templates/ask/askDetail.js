@@ -15,6 +15,10 @@ Template.askDetail.events({
             Router.go('askList');
         }
     },
+    'click #a_vote' : function(e) {
+        e.preventDefault();
+        Meteor.call('askVote', this._id);
+    },
     'submit form' : function(e) {
         e.preventDefault();
         t = $(e.target);
