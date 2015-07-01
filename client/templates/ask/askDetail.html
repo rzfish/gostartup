@@ -2,11 +2,9 @@
     {{#with ask}}
         <small>
         <div class="row" style="margin-bottom:-15px;">
-            <div class="col-xs-2">作者：{{author}}</div>
-            <div class="col-xs-2">创建：{{timeDiff created}}</div>
-            <div class="col-xs-2">修改：{{timeDiff updated}}</div>
-            <div class="col-xs-2">回复：{{reCnt}}</div>
-            <div class="col-xs-2">投票：{{up}}</div>
+            <div class="col-xs-4">作者：{{author}}</div>
+            <div class="col-xs-4">创建：{{timeDiff created}}</div>
+            <div class="col-xs-4">修改：{{timeDiff updated}}</div>
         </div>
         </small>
     <h3 class="bg-primary">
@@ -14,13 +12,12 @@
     </h3>
     <div class="container" style="margin-top:-9px;">
         <div class="row">
-            <div class="col-xs-3">标签: {{tag}}</div>
-            <div class="col-xs-4"><label>相关产品：</label>
+            <div class="col-xs-6">标签: {{tag}}</div>
+            <div class="col-xs-6"><label>相关产品：</label>
                 {{#with forProd}}
                 <a href="/product/detail/{{_id}}">{{title}}</a>
                 {{/with}}
             </div>
-            <div class="col-xs-5">&nbsp;</div>
         </div>
     </div>
     <pre>{{detail}}</pre>
@@ -36,9 +33,9 @@
         </form>
     </div>
     <div class="row">
-        <div class="col-xs-4">&nbsp;</div>
-        <div class="col-xs-2"><a href="#" id="a_reply">回复</a></div>
-        <div class="col-xs-2"><a href="#" id="a_vote">投票</a></div>
+        <div class="col-xs-2">&nbsp;</div>
+        <div class="col-xs-3"><a href="#" id="a_reply">回复</a>（{{reCnt}}）</div>
+        <div class="col-xs-3"><a href="#" id="a_vote">投票</a>（{{up}}）</div>
         {{#if ownAsk}}
         <div class="col-xs-2"><a href="#" id="a_del">删除</a></div>
         <div class="col-xs-2"><a href="/ask/update/{{_id}}">编辑</a></div>
