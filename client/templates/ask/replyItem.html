@@ -1,0 +1,13 @@
+<template name="replyItem">
+    <pre class="main" style="padding:2px;"> - {{comment}}</pre>
+    <small>
+    <div class="row bg-info" style="margin: -10px 0px 5px 0px">
+        <div class="col-xs-1">&nbsp;</div>
+        <div class="col-xs-2">{{author}}</div>
+        <div class="col-xs-3">{{timeDiff created}}</div>
+        {{#if ownsReply}}
+            <div class="col-xs-2"><a href="#" class="del_reply">删除</a></div>
+        {{/if}}
+    </div>
+    </small>
+</template>
