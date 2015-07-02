@@ -36,8 +36,10 @@ Template.askDetail.events({
         rep.created = $.now();
         rep.updated = rep.created;
         rep.askId = this._id;
+
         Replies.insert(rep);
         Asks.update({_id: this._id}, {$inc: {reCnt: 1}});
+        gostart.actLog('rep', this._id);
         $("#div_reply").toggleClass("hidden");
     },
 });

@@ -1,16 +1,20 @@
 <template name="askList">
     <h4>求助列表</h4>
     {{#each asks}}
-        <div class="bg-info" style="margin-top:10px;"><a href="/ask/detail/{{_id}}">[{{tag}}] <b>{{title}}</b></a> - {{author}}</div>
-        <pre style="margin-bottom:0px;">{{detail}}</pre>
-        <div class="row">
-            <div class="col-xs-3"><small>{{timeDiff created}}创建</small></div>
-            <div class="col-xs-3"><small>{{timeDiff updated}}修改</small></div>
-            <div class="col-xs-3"><small>{{reCnt}}回复</small></div>
-            <div class="col-xs-3">
-                <small>{{up}}投票</small> 
-                <a href="#" id="up_{{_id}}" class="vote"><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span></a>
-            </div>
-        </div>
+        {{>askItem}}
     {{/each}}
+</template>
+
+<template name="askItem">
+    <div class="bg-info" style="margin-top:10px;"><a href="/ask/detail/{{_id}}">[{{tag}}] <b>{{title}}</b></a> - {{author}}</div>
+    <pre style="margin-bottom:0px;">{{detail}}</pre>
+    <div class="row">
+        <div class="col-xs-3"><small>{{timeDiff created}}创建</small></div>
+        <div class="col-xs-3"><small>{{timeDiff updated}}修改</small></div>
+        <div class="col-xs-3"><small>{{reCnt}}回复</small></div>
+        <div class="col-xs-3">
+            <small>{{up}}投票</small> 
+            <a href="#" id="up_{{_id}}" class="vote"><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span></a>
+        </div>
+    </div>
 </template>

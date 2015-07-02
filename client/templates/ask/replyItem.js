@@ -10,5 +10,6 @@ Template.replyItem.events({
         e.preventDefault();        
         Replies.remove({_id: this._id});
         Asks.update({_id: this.askId}, {$inc:{reCnt: -1}});
+        gostart.actLog('rmRep', this.askId);
     }
 });
