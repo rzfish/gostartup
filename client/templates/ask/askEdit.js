@@ -47,7 +47,6 @@ Template.askEdit.events({
             log.o = "crAsk";
         } else {
             ask.updated = $.now();
-            log.i = id;
             Asks.update({_id: id}, {$set: ask});
             gostart.actLog('upAsk', id, false)
         }
