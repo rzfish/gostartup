@@ -19,6 +19,27 @@ Template.askDetail.events({
         e.preventDefault();
         Meteor.call('askVote', this._id);
     },
+    'click #a_follow' : function(e) {
+        e.preventDefault();
+        var cnt = Follows.find({u: Meteor.userId(), t: 'ask', i: this._id}).count();
+        if (cnt <= 0){
+            var f = {
+                t: $.now(),
+                u: Meteor.userId(),
+                t: 'ask',
+                i: this._id
+            }
+            Follows.insert(f);
+
+            Asks.update({_id: this._id}, {$inc: {follow: 1}});
+            gostart.actLog('flwAsk', this._id, false);
+        } else {
+            // cancel follow
+            Asks.update({_id: this._id}, {$inc: {follow: -1}});
+            gostart.actLog('uflwAsk', this._id, false);
+        }
+    },
+
     'submit form' : function(e) {
         e.preventDefault();
         t = $(e.target);
@@ -39,7 +60,7 @@ Template.askDetail.events({
 
         Replies.insert(rep);
         Asks.update({_id: this._id}, {$inc: {reCnt: 1}});
-        gostart.actLog('rep', this._id);
+        gostart.actLog('rep', this._id, false);
         $("#div_reply").toggleClass("hidden");
     },
 });
@@ -56,5 +77,8 @@ Template.askDetail.helpers({
 });
 
 Template.askDetail.onRendered(function(){
-    gostart.actLog("vAsk", this.data.ask._id, true);
+    var res = gostart.actLog("vAsk", this.data.ask._id, true);
+    if(res) {
+        Asks.update({_id: this.data.ask._id}, {$inc: {pv: 1}})
+    }
 });

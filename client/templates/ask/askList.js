@@ -8,6 +8,6 @@ Template.askList.helpers({
 Template.askList.events({
     "click .vote": function(e) {
         e.preventDefault();
-        Meteor.call('askVote', this._id); 
+        Meteor.call('vuAsk', this._id); 
     }
 })

@@ -42,9 +42,9 @@ Template.askEdit.events({
             ask.reCnt = 0;
             ask.pv = 0;
             ask.up = 0;
+            ask.follow = 0;
             Asks.insert(ask);
             gostart.actLog('crtAsk', id, false)
-            log.o = "crAsk";
         } else {
             ask.updated = $.now();
             Asks.update({_id: id}, {$set: ask});

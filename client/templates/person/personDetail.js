@@ -15,6 +15,23 @@ Template.personDetail.events({
 });
 
 Template.personDetail.helpers({
+    data: function() { 
+        var prod = Products.find({userId: this.person._id});
+        if (prod.count() == 0) {
+            prod = null;
+        }
+        return {
+            prods: prod,
+            asks: Asks.find({userId: this.person._id}),
+            feeds: Logs.find({u: this.person._id}, {sort: {t: -1}}),
+        };
+    },
+});
+
+Template.personInfo.helpers({
+    isMe: function() {
+        return this._id == Meteor.userId();
+    },
     owns: function() {
         return (this._id == Meteor.userId()) || 
             (Meteor.user().username == 'root');  // tmp solution for admin
@@ -22,14 +39,16 @@ Template.personDetail.helpers({
     isRoot: function() {
         return (Meteor.user().username == 'root');  // tmp solution for admin
     },
-    data: function() { 
-        var prod = Products.find({userId: this._id});
-        if (prod.count() == 0) {
-            prod = null;
-        }
-        return {
-            prods: prod,
-            asks: Asks.find({userId: this._id}),
-        };
+});
+
+Template.personInfo.events({
+    "click #a_showPersonInfo": function() {
+        $('#personInfo').toggleClass('hidden');
     },
+});
+
+Template.personInfo.onRendered(function(){
+    if(this.data._id != Meteor.userId()) {
+        $('#personInfo').toggleClass('hidden');
+    }
 })
