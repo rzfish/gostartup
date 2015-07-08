@@ -1,0 +1,9 @@
+<template name="personFeed">
+    {{#each data}}
+        {{>personFeedItem}}
+    {{/each}}
+</template>
+
+<template name="personFeedItem">
+    <div>{{timeDiff t}}: {{name}} {{action}} {{{target}}}</div>
+</template>
