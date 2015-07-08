@@ -32,6 +32,6 @@ Template.prodDetail.helpers({
 });
 
 Template.prodDetail.onRendered(function(){
-    gostart.actLog('vProd', this._id, true);
+    gostart.actLog('vst', 'prd', this._id, true);
 });
 

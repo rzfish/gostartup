@@ -44,11 +44,11 @@ Template.askEdit.events({
             ask.up = 0;
             ask.follow = 0;
             Asks.insert(ask);
-            gostart.actLog('crtAsk', id, false)
+            gostart.actLog('crt', 'ask', id, false)
         } else {
             ask.updated = $.now();
             Asks.update({_id: id}, {$set: ask});
-            gostart.actLog('upAsk', id, false)
+            gostart.actLog('upd', 'ask', id, false)
         }
 
         Router.go('askList');

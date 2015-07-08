@@ -54,14 +54,14 @@ Template.personEdit.events({
         var id = t.find('[name=id]').val();
         if(id.length > 0) {
             Persons.update({_id: id}, {$set:person});
-            gostart.actLog('upPsn', id, false);
+            gostart.actLog('upd', 'psn', id, false);
         } else {
             id = Meteor.userId();
             person._id = id;
             person.created = $.now();
             person.lastV = person.created;
             Persons.insert(person);
-            gostart.actLog('crtPsn', id, false);
+            gostart.actLog('crt', 'psn', id, false);
         }
 
         // update user profile

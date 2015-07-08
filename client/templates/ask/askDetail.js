@@ -21,23 +21,12 @@ Template.askDetail.events({
     },
     'click #a_follow' : function(e) {
         e.preventDefault();
-        var cnt = Follows.find({u: Meteor.userId(), t: 'ask', i: this._id}).count();
-        if (cnt <= 0){
-            var f = {
-                t: $.now(),
-                u: Meteor.userId(),
-                t: 'ask',
-                i: this._id
-            }
-            Follows.insert(f);
-
-            Asks.update({_id: this._id}, {$inc: {follow: 1}});
-            gostart.actLog('flwAsk', this._id, false);
-        } else {
-            // cancel follow
-            Asks.update({_id: this._id}, {$inc: {follow: -1}});
-            gostart.actLog('uflwAsk', this._id, false);
+        var res = followHelper.toggle(this._id);
+        var title = '关注'
+        if (res) {
+            title = '取消关注';
         }
+        $('#a_follow').text(title);
     },
 
     'submit form' : function(e) {
@@ -60,7 +49,7 @@ Template.askDetail.events({
 
         Replies.insert(rep);
         Asks.update({_id: this._id}, {$inc: {reCnt: 1}});
-        gostart.actLog('rep', this._id, false);
+        gostart.actLog('rep', 'ask', this._id, false);
         $("#div_reply").toggleClass("hidden");
     },
 });
@@ -77,8 +66,13 @@ Template.askDetail.helpers({
 });
 
 Template.askDetail.onRendered(function(){
-    var res = gostart.actLog("vAsk", this.data.ask._id, true);
+    var res = gostart.actLog('vst', 'ask', this.data.ask._id, true);
     if(res) {
         Asks.update({_id: this.data.ask._id}, {$inc: {pv: 1}})
+    }
+
+    res = followHelper.get(this.data.ask._id);
+    if(res) {
+        $('#a_follow').text("取消关注");
     }
 });

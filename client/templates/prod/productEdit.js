@@ -47,7 +47,7 @@ Template.prodEdit.events({
             gostart.actLog('crProd', id, false);
         } else {
             prod.updated = $.now();
-            gostart.actLog('upProd', id, false);
+            gostart.actLog('upd', 'prd', id, false);
             Products.update({_id: id}, {$set: prod});
         }
         Router.go('prodList');
