@@ -71,7 +71,7 @@ Template.askDetail.onRendered(function(){
         Asks.update({_id: this.data.ask._id}, {$inc: {pv: 1}})
     }
 
-    res = followHelper.get(this.data.ask._id);
+    res = followHelper.isFollowed(this.data.ask._id);
     if(res) {
         $('#a_follow').text("取消关注");
     }
