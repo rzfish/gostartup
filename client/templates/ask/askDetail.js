@@ -18,15 +18,13 @@ Template.askDetail.events({
     'click #a_vote' : function(e) {
         e.preventDefault();
         Meteor.call('askVote', this._id);
+        if(followHelper.isFollowed(this._id) == false) {
+            var res = followHelper.toggle(this._id, '#a_follow');
+        }
     },
     'click #a_follow' : function(e) {
         e.preventDefault();
-        var res = followHelper.toggle(this._id);
-        var title = '关注'
-        if (res) {
-            title = '取消关注';
-        }
-        $('#a_follow').text(title);
+        var res = followHelper.toggle(this._id, '#a_follow');
     },
 
     'submit form' : function(e) {
@@ -51,6 +49,10 @@ Template.askDetail.events({
         Asks.update({_id: this._id}, {$inc: {reCnt: 1}});
         gostart.actLog('rep', 'ask', this._id, false);
         $("#div_reply").toggleClass("hidden");
+
+        if(followHelper.isFollowed(this._id) == false) {
+            var res = followHelper.toggle(this._id, '#a_follow');
+        }
     },
 });
 
@@ -73,6 +75,6 @@ Template.askDetail.onRendered(function(){
 
     res = followHelper.isFollowed(this.data.ask._id);
     if(res) {
-        $('#a_follow').text("取消关注");
+        $('#a_follow').text("消注");
     }
 });
