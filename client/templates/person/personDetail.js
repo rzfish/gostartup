@@ -11,10 +11,15 @@ Template.personDetail.events({
             Router.go('personList');
         }
     },
-
+    "click #a_showPersonInfo": function() {
+        $('#personInfo').toggleClass('hidden');
+    },
 });
 
 Template.personDetail.helpers({
+    isMe: function() {
+        return this.person._id == Meteor.userId();
+    },
     data: function() { 
         var prod = Products.find({userId: this.person._id});
         if (prod.count() == 0) {
@@ -28,10 +33,13 @@ Template.personDetail.helpers({
     },
 });
 
+Template.personDetail.onRendered(function(){
+    if(this.data.person._id != Meteor.userId()) {
+        $('#personInfo').toggleClass('hidden');
+    }
+});
+
 Template.personInfo.helpers({
-    isMe: function() {
-        return this._id == Meteor.userId();
-    },
     owns: function() {
         return (this._id == Meteor.userId()) || 
             (Meteor.user().username == 'root');  // tmp solution for admin
@@ -41,14 +49,3 @@ Template.personInfo.helpers({
     },
 });
 
-Template.personInfo.events({
-    "click #a_showPersonInfo": function() {
-        $('#personInfo').toggleClass('hidden');
-    },
-});
-
-Template.personInfo.onRendered(function(){
-    if(this.data._id != Meteor.userId()) {
-        $('#personInfo').toggleClass('hidden');
-    }
-})
