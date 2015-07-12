@@ -6,16 +6,35 @@
 </template>
 
 <template name="askItem">
-    <div class="bg-info" style="margin-top:10px;"><a href="/ask/detail/{{_id}}">[{{tag}}] <b>{{title}}</b></a> - {{author}}</div>
-    <pre style="margin-bottom:0px;">{{detail}}</pre>
     <div class="row">
-        <div class="col-xs-3"><small>{{timeDiff created}}创建</small></div>
-        <div class="col-xs-3"><small>{{timeDiff updated}}修改</small></div>
-        <div class="col-xs-2"><small>{{reCnt}}回复</small></div>
-        <div class="col-xs-2"><small>{{pv}}阅读</small></div>
-        <div class="col-xs-2">
-            <small>{{up}}投票</small> 
-            <a href="#" id="up_{{_id}}" class="vote"><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span></a>
+        <div class="col-xs-1">
+            <div class="row vote">
+                <div class="col-xs-6">
+                    <div class="row">
+                        <a href="#" class="a_vote_up" id="a_up_{{_id}}"><span class="glyphicon glyphicon-triangle-top"></span></a>
+                    </div>
+                    <div class="row">
+                        <span style="width:100px;">{{vote}}</span>
+                    </div>
+                    <div class="row">
+                        <a href="#" class="a_vote_down" id="a_down_{{_id}}"><span class="glyphicon glyphicon-triangle-bottom"></span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-11">
+            <div class="bg-info" style="margin-top:10px;"><a href="/ask/detail/{{_id}}">[{{tag}}] <b>{{title}}</b></a> - {{author}}</div>
+            <pre style="margin-bottom:0px;">{{abs}}</pre>
+            <div class="row">
+                <div class="col-xs-3"><small><span class="glyphicon glyphicon-plus-sign" title="创建"></span> {{timeDiff created}}</small></div>
+                <div class="col-xs-3"><small><span class="glyphicon glyphicon-pencil" title="修改"></span> {{timeDiff updated}}</small></div>
+                <div class="col-xs-3"><small><span class="glyphicon glyphicon-envelope" title="回复"></span> {{reCnt}}</small></div>
+                <div class="col-xs-3"><small><span class="glyphicon glyphicon-eye-open" title="阅读"></span> {{pv}}</small></div>
+                <!--div class="col-xs-2">
+                    <small>{{up}}投票</small> 
+                    <a href="#" id="up_{{_id}}" class="vote"><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span></a>
+                </div-->
+            </div>
         </div>
     </div>
 </template>

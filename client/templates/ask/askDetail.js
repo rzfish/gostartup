@@ -15,13 +15,6 @@ Template.askDetail.events({
             Router.go('askList');
         }
     },
-    'click #a_vote' : function(e) {
-        e.preventDefault();
-        Meteor.call('askVote', this._id);
-        if(followHelper.isFollowed(this._id) == false) {
-            var res = followHelper.toggle(this._id, '#a_follow');
-        }
-    },
     'click #a_follow' : function(e) {
         e.preventDefault();
         var res = followHelper.toggle(this._id, '#a_follow');
