@@ -7,6 +7,7 @@ Template.personEdit.events({
         var email = t.find('[name=email]').val();
         var wx = t.find('[name=weixinId]').val();
         var phone = t.find('[name=mobile]').val();
+        var dage = t.find('[name=dogAge]').val();
         var stat = t.find('[name=status]').val();
         var ti = t.find('[name=time_input]').val();
         var ci = t.find('[name=money_input]').val();
@@ -41,6 +42,7 @@ Template.personEdit.events({
             loc: t.find('[name=s_prov]').val() + "-" + 
                 t.find('[name=s_city]').val(),
             birth: t.find('[name=birth_period]').val(),
+            dogAge: dage,
             status: stat,
             timeIn: ti,
             capIn: ci,
@@ -78,6 +80,7 @@ Template.personEdit.onRendered(function() {
         if(this.data){
             t.$('#sex').val(this.data.sex);
             t.$('#birth_period').val(this.data.birth);
+            t.$('#sel_dogAge').val(this.data.dogAge);
             t.$('#status').val(this.data.status);
             t.$('#time_input').val(this.data.timeIn);
             t.$('#money_input').val(this.data.capIn);
