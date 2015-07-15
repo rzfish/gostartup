@@ -26,6 +26,9 @@
             {{>personFeed}}
         <div class="bg-primary">我的活动</div>
         {{#with data}}
+		{{#each referralAsks}}
+            {{>logItem}}
+        {{/each}}
         {{#each feeds}}
             {{>logItem}}
         {{/each}}
@@ -60,3 +63,4 @@
         <button class="btn btn-primary" id="btn_del">删除</button>
     {{/if}}
 </template>
+

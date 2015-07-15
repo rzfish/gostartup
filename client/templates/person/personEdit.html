@@ -56,6 +56,15 @@
             <option value="其他">其他</option>
         </select>
     </div>
+	
+	<p class="bg-primary">推荐人</p>
+	<select name="referral" id="referral">
+            <option value="">(必填)</option>
+            {{#each persons}}
+				{{> Referral}}
+			{{/each}}
+    </select>
+	
     <div>
         <p class="bg-primary">个人标签</p>
         <div class="container">
@@ -88,7 +97,7 @@
     <div>
         <select name="status" id="status">
             <option value="">目前状态...</option>
-            <option value="全职创业">全职创业</option>
+			<option value="全职创业">全职创业</option>
             <option value="兼职创业">兼职创业</option>
             <option value="有项目想法">有项目想法</option>
             <option value="投资人">投资人</option>
@@ -121,6 +130,8 @@
     </form>
 </template>
 
+
+
 <template name="personNew">
     <div>
         <h3>完善个人信息</h3>
@@ -133,3 +144,6 @@
     {{>personEdit}}
 </template>
 
+<template name="Referral">
+    <option value="{{_id}}">{{name}}</option>
+</template>

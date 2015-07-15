@@ -42,7 +42,6 @@ Template.askEdit.events({
             ask.reCnt = 0;
             ask.pv = 0;
             ask.up = 0;
-            ask.down = 0;
             ask.follow = 0;
             Asks.insert(ask);
             gostart.actLog('crt', 'ask', id, false)

@@ -44,7 +44,7 @@ Template.prodEdit.events({
             prod.reCnt = 0;
             prod.up = 0;
             Products.insert(prod);
-            gostart.actLog('crt', 'prd', id, false);
+            gostart.actLog('crProd', id, false);
         } else {
             prod.updated = $.now();
             gostart.actLog('upd', 'prd', id, false);
