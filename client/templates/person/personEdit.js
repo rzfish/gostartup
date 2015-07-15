@@ -1,3 +1,8 @@
+Template.personEdit.helpers({
+        persons: function() {
+            return Persons.find({_id : {$ne : Meteor.userId()}});
+        }
+});
 
 Template.personEdit.events({
     'submit #person_edit' : function(e) {
@@ -25,8 +30,14 @@ Template.personEdit.events({
             need_invest = "否";
         } else {
             if (stat == "" || ti == "" || ci == "") {
-                err_str += " － 需要投资时必须完整填写创投对接信息";
+                err_str += " － 需要投资时必须完整填写创投对接信息\n";
             }
+        }
+       
+        var referral = t.find('[name=referral]').val();
+        if(referral == "")
+        {
+            err_str += " － 推荐人不能为空\n";
         }
 
         if(err_str.length > 0) {
@@ -51,6 +62,9 @@ Template.personEdit.events({
             frndTag: gostart.getCheckboxGroupValues(t.find('[name=friend_tag]')),
             needInvest: need_invest,
             intro: t.find('[name=intro]').val(),
+            referralID: referral,
+            referralName: Persons.findOne({_id:referral}).name,
+            personStatus: 0,//0 推荐人还没有批准，1推荐人批准了
         };
 
         var id = t.find('[name=id]').val();
@@ -63,6 +77,7 @@ Template.personEdit.events({
             person.created = $.now();
             person.lastV = person.created;
             Persons.insert(person);
+            gostart.actLog('ref', 'psn', person.referralID, false);
             gostart.actLog('crt', 'psn', id, false);
         }
 
@@ -88,6 +103,7 @@ Template.personEdit.onRendered(function() {
             gostart.setCheckboxGroup(t.$('[name=my_tag]'), this.data.tag);
             gostart.setCheckboxGroup(t.$('[name=need_invest]'), this.data.needInvest);
             Cities.initOpts = this.data.loc.split("-");
+            t.$('#referral').val(this.data.referralID);
         }
         Cities.selOpts = ["现居住省份", "现居住市"];
         Cities.init();
