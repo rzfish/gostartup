@@ -43,9 +43,9 @@ Template.askDetail.events({
         gostart.actLog('rep', 'ask', this._id, false);
         $("#div_reply").toggleClass("hidden");
 
-        if(followHelper.isFollowed(this._id) == false) {
-            var res = followHelper.toggle(this._id, '#a_follow');
-        }
+        // if(followHelper.isFollowed(this._id) == false) {
+        //     var res = followHelper.toggle(this._id, '#a_follow');
+        // }
     },
 });
 

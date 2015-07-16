@@ -14,7 +14,7 @@
                         <a href="#" class="a_vote_up" id="a_up_{{_id}}"><span class="glyphicon glyphicon-triangle-top"></span></a>
                     </div>
                     <div class="row">
-                        <span style="width:100px;">{{vote}}</span>
+                        <span id="vc_{{_id}}" style="width:100px;">{{vote}}</span>
                     </div>
                     <div class="row">
                         <a href="#" class="a_vote_down" id="a_down_{{_id}}"><span class="glyphicon glyphicon-triangle-bottom"></span></a>
@@ -30,10 +30,6 @@
                 <div class="col-xs-3"><small><span class="glyphicon glyphicon-pencil" title="修改"></span> {{timeDiff updated}}</small></div>
                 <div class="col-xs-3"><small><span class="glyphicon glyphicon-envelope" title="回复"></span> {{reCnt}}</small></div>
                 <div class="col-xs-3"><small><span class="glyphicon glyphicon-eye-open" title="阅读"></span> {{pv}}</small></div>
-                <!--div class="col-xs-2">
-                    <small>{{up}}投票</small> 
-                    <a href="#" id="up_{{_id}}" class="vote"><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span></a>
-                </div-->
             </div>
         </div>
     </div>

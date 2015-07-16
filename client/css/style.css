@@ -5,11 +5,15 @@
 }
 
 .a_vote_up.voted {
-  color: lightgreen;
+  color: #F0C66C;
+}
+
+.a_vote_up, .a_vote_down {
+  color: lightgray;
 }
 
 .a_vote_down.voted {
-  color: red;
+  color: #DE34ED;
 }
 /*
 .grid-block, .main, .post, .comments li, .comment-form {

@@ -6,10 +6,6 @@ Template.askList.helpers({
 });
 
 Template.askList.events({
-    // "click .vote": function(e) {
-    //     e.preventDefault();
-    //     Meteor.call('askVote', this._id); 
-    // }
 });
 
 Template.askItem.helpers({
@@ -38,27 +34,42 @@ Template.askItem.helpers({
 
 });
 
+function update_vote_button_color(id, vote_cnt) {
+    switch(vote_cnt) {
+    case 0:
+        $("#a_up_" + id).removeClass("voted");
+        $("#a_down_" + id).removeClass("voted");
+        $("#vc" + id).attr("class","");
+        break;
+    case 1: 
+        $("#a_up_" + id).addClass("voted");
+        $("#a_down_" + id).removeClass("voted");
+        $("#vc_" + id).attr("class","a_vote_up voted");
+        break;
+    case -1: 
+        $("#a_up_" + id).removeClass("voted");
+        $("#a_down_" + id).addClass("voted");
+        $("#vc_" + id).attr("class","a_vote_down voted");
+        break;
+    }
+
+}
+
 Template.askItem.events({
     "click .a_vote_up" : function(e) {
         e.preventDefault();
         var ret = askHelper.vote("vup", this._id);
-        $("#a_up_" + this._id).toggleClass("voted");
+        update_vote_button_color(this._id, ret);
     },
 
     "click .a_vote_down" : function(e) {
         e.preventDefault();
         var ret = askHelper.vote("vdn", this._id);
-        $("#a_down_" + this._id).toggleClass("voted");
+        update_vote_button_color(this._id, ret);
     }
 });
 
 Template.askItem.onRendered(function() {
-    var upid = "#a_up_" + this.data._id;
-    var dnid = "#a_down_" + this.data._id;
-    if(askHelper.isVoted("vup", this.data._id)) {
-        $(upid).toggleClass("voted");
-    }
-    if(askHelper.isVoted("vdn", this.data._id)) {
-        $(dnid).toggleClass("voted");
-    }
+    var ret = askHelper.getVoted(this.data._id);
+    update_vote_button_color(this.data._id, ret);
 })
