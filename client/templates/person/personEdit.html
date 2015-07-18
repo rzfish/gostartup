@@ -3,16 +3,16 @@
     <input type="hidden" name="id" value="{{_id}}"/>
     <p class="bg-primary">基本信息</p>
     <div>
-        <input type="text" name="name" id="name" placeholder="真实姓名（必填）" width="4" value="{{name}}"/>
+        <input type="text" name="name" id="name" placeholder="真实姓名（必填）" width="4" value=""/>
     </div>
     <div>
-        <input type="text" name="weixinId" id="weixinId" placeholder="微信号（必填）" alt="微信号" value="{{wxid}}"/>
+        <input type="text" name="weixinId" id="weixinId" placeholder="微信号（必填）" alt="微信号" value=""/>
     </div>
     <div>
-        <input type="mail" name="email" id="email" placeholder="电子邮箱（必填）" value="{{mail}}"/>
+        <input type="mail" name="email" id="email" placeholder="电子邮箱（必填）" value=""/>
     </div>
     <div>
-        <input type="text" name="mobile" id="mobile" placeholder="手机（必填）" value="{{mobile}}"/>
+        <input type="text" name="mobile" id="mobile" placeholder="手机（必填）" value=""/>
     </div>
     <div>
         <select name="sex" id="sex">
@@ -58,13 +58,25 @@
     </div>
     <div>
         <p class="bg-primary">推荐人</p>
-        <select name="referral" id="referral">
-                <option value="">(必填)</option>
-                {{#each persons}}
-                   {{> Referral}}
-               {{/each}}
-        </select>
+		{{#if isApprove}}
+			<select disabled="disabled" name="referral" id="referral">
+					<option value="">(必填)</option>
+					{{#each persons}}
+					   {{> Referral}}
+				   {{/each}}
+			</select>
+		{{else}}
+			<select name="referral" id="referral">
+					<option value="">(必填)</option>
+					{{#each persons}}
+					   {{> Referral}}
+				   {{/each}}
+			</select>		
+		{{/if}}
     </div>
+	
+	
+	
     <div>
         <p class="bg-primary">个人标签</p>
         <div class="container">
@@ -153,3 +165,4 @@
 <template name="Referral">
     <option value="{{_id}}">{{name}}</option>
 </template>
+

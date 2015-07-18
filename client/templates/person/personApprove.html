@@ -3,14 +3,14 @@
         {{#with person}}{{name}}{{/with}}
     </h2>
 	{{#with person}}
-            {{>personInfo}}
+            {{>personInfoApprove}}
     {{/with}}
 	
 	<button class="btn btn-primary" id="btn_agree">批准</button>
 	<button class="btn btn-primary" id="btn_disAgree">拒绝</button>
 </template>
 
-<template name="personInfo">
+<template name="personInfoApprove">
     <p class="bg-primary">基本信息</p>
     <div>姓名：{{name}}</div>
     <div>微信号：{{wxid}}</div>
