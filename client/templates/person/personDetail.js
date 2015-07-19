@@ -29,8 +29,13 @@ Template.personDetail.helpers({
             prods: prod,
             asks: Asks.find({userId: this.person._id}),
             feeds: Logs.find({u: this.person._id}, {sort: {t: -1}}),
+            referralAsks: Logs.find({i: this.person._id,a:'ref',c:'psn'},{sort: {t: -1}}),            
         };
     },
+	isVIP: function() {
+		theMoney = Persons.findOne({_id : this.person._id}).money;
+		return  theMoney >= 99;
+	},
 });
 
 Template.personDetail.onRendered(function(){
@@ -47,5 +52,11 @@ Template.personInfo.helpers({
     isRoot: function() {
         return (Meteor.user().username == 'root');  // tmp solution for admin
     },
+	subordinates: function() {
+        return Persons.find({referralID : this._id});
+    },
+	referralName: function() {
+		return Persons.findOne({_id: this.referralID}).name;
+	},
 });
 

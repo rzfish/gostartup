@@ -1,3 +1,11 @@
+Template.personEdit.helpers({
+        persons: function() {
+            return Persons.find({_id : {$ne : Meteor.userId()}});
+        },
+		isApprove: function() {
+			return Persons.findOne({_id: Meteor.userId()}).personStatus == 1;
+		},
+});
 
 Template.personEdit.events({
     'submit #person_edit' : function(e) {
@@ -25,8 +33,14 @@ Template.personEdit.events({
             need_invest = "否";
         } else {
             if (stat == "" || ti == "" || ci == "") {
-                err_str += " － 需要投资时必须完整填写创投对接信息";
+                err_str += " － 需要投资时必须完整填写创投对接信息\n";
             }
+        }
+       
+        var referral = t.find('[name=referral]').val();
+        if(referral == "")
+        {
+            err_str += " － 推荐人不能为空\n";
         }
 
         if(err_str.length > 0) {
@@ -51,18 +65,26 @@ Template.personEdit.events({
             frndTag: gostart.getCheckboxGroupValues(t.find('[name=friend_tag]')),
             needInvest: need_invest,
             intro: t.find('[name=intro]').val(),
+            referralID: referral,
+            //referralName: Persons.findOne({_id:referral}).name,
         };
 
         var id = t.find('[name=id]').val();
         if(id.length > 0) {
-            Persons.update({_id: id}, {$set:person});
+            Persons.update({_id: id}, {$set:person});			
+			logID = Logs.findOne({u: id,a: 'ref',c: 'psn'})._id;
+			Logs.remove({_id: logID});
+			gostart.actLog('ref', 'psn', person.referralID, false);
             gostart.actLog('upd', 'psn', id, false);
         } else {
             id = Meteor.userId();
             person._id = id;
             person.created = $.now();
             person.lastV = person.created;
+			person.personStatus = 0,//0 推荐人还没有批准，1推荐人批准了
+			person.money = 0,//0 推荐人还没有批准，1推荐人批准了
             Persons.insert(person);
+            gostart.actLog('ref', 'psn', person.referralID, false);
             gostart.actLog('crt', 'psn', id, false);
         }
 
@@ -78,6 +100,10 @@ Template.personEdit.events({
 Template.personEdit.onRendered(function() {
         var t = this;
         if(this.data){
+			t.$('#name').val(this.data.name);
+			t.$('#weixinId').val(this.data.wxid);
+			t.$('#email').val(this.data.mail);
+			t.$('#mobile').val(this.data.mobile);
             t.$('#sex').val(this.data.sex);
             t.$('#birth_period').val(this.data.birth);
             t.$('#sel_dogAge').val(this.data.dogAge);
@@ -88,6 +114,7 @@ Template.personEdit.onRendered(function() {
             gostart.setCheckboxGroup(t.$('[name=my_tag]'), this.data.tag);
             gostart.setCheckboxGroup(t.$('[name=need_invest]'), this.data.needInvest);
             Cities.initOpts = this.data.loc.split("-");
+            t.$('#referral').val(this.data.referralID);
         }
         Cities.selOpts = ["现居住省份", "现居住市"];
         Cities.init();

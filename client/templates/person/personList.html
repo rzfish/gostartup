@@ -20,6 +20,9 @@
     <div class="row">
         <div class="col-xs-2">
             <a href="{{_id}}">{{name}}</a>
+			{{#if isVIP}}
+			<img src="/images/v_logo.png" style="width:15px;height:15px;"/>
+			{{/if}}
         </div>
         <div class="col-xs-2">{{wxid}}</div>
         <div class="col-xs-2">{{tag}}</div>

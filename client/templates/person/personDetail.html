@@ -1,6 +1,9 @@
 <template name="personDetail">
     <h2>
         {{#with person}}{{name}}{{/with}}
+		{{#if isVIP}}
+		<img src="/images/v_logo.png" style="width:20px;height:20px;"/>
+		{{/if}}
     </h2>
     {{#if isMe}}
     <div><a href="#" id="a_showPersonInfo">显示详情</a></div>
@@ -26,6 +29,9 @@
             {{>personFeed}}
         <div class="bg-primary">我的活动</div>
         {{#with data}}
+        {{#each referralAsks}}
+            {{>logItem}}
+        {{/each}}
         {{#each feeds}}
             {{>logItem}}
         {{/each}}
@@ -53,6 +59,14 @@
     <div>目前状态：{{status}}</div>
     <div>时间投入：{{timeIn}}</div>
     <div>资金投入：{{capIn}}</div>
+	<p class="bg-primary">推荐人</p>
+	<div>{{referralName}}</div>
+    <p class="bg-primary">下线</p>
+	<div>				
+		{{#each subordinates}}
+			{{> Referrals}}
+		{{/each}}
+    </div>
 
     {{#if owns}}
         <button class="btn btn-primary" id="btn_update">修改</button>
@@ -60,4 +74,9 @@
     {{#if isRoot}}
         <button class="btn btn-primary" id="btn_del">删除</button>
     {{/if}}
+</template>
+
+
+<template name="Referrals">
+	<a href="/person/{{_id}}">{{name}}</a>
 </template>
