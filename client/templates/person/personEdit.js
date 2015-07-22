@@ -71,9 +71,11 @@ Template.personEdit.events({
 
         var id = t.find('[name=id]').val();
         if(id.length > 0) {
-            Persons.update({_id: id}, {$set:person});			
-			logID = Logs.findOne({u: id,a: 'ref',c: 'psn'})._id;
-			Logs.remove({_id: logID});
+            Persons.update({_id: id}, {$set:person});	
+			ref_log = Logs.findOne({u: id,a: 'ref',c: 'psn'});
+            if(ref_log) {
+                Logs.remove({_id: ref_log._id});
+            }
 			gostart.actLog('ref', 'psn', person.referralID, false);
             gostart.actLog('upd', 'psn', id, false);
         } else {
