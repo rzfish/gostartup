@@ -28,7 +28,7 @@ Template.personDetail.helpers({
         return {
             prods: prod,
             asks: Asks.find({userId: this.person._id}),
-            feeds: Logs.find({u: this.person._id}, {sort: {t: -1}}),
+            feeds: Logs.find({u: this.person._id}, {sort: {t: -1}, limit: 20}),
             referralAsks: Logs.find({i: this.person._id,a:'ref',c:'psn'},{sort: {t: -1}}),            
         };
     },

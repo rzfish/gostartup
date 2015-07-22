@@ -1,7 +1,11 @@
 <template name="personFeed">
-    {{#each data}}
-        {{>personFeedItem}}
-    {{/each}}
+    {{#if data.hasData}}
+        {{#each data.logs}}
+            {{>personFeedItem}}
+        {{/each}}
+    {{else}}
+        没有更新
+    {{/if}}
 </template>
 
 <template name="personFeedItem">

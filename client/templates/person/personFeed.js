@@ -6,8 +6,9 @@ Template.personFeed.helpers({
             console.log('follow targets: ' + r);
             ia.push(r.i);
         });
-        var ret = Logs.find({i:{$in: ia}, u:{$not: Meteor.userId()}});
-        return ret;
+        var data = Logs.find({i:{$in: ia}, u:{$not: Meteor.userId()}}, {sort: {t: -1}, limit: 20});
+        var logCount = data.count();
+        return {logs: data, hasData: logCount > 0};
     }
 });
 
