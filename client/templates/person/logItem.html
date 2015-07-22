@@ -1,3 +1,6 @@
 <template name="logItem">
+    {{#if target}}
+    <!--TODO: need to use more efficient way to filter out imcomplete data -->
     <div>{{timeDiff t}} {{action}} {{{target}}}</div>
+    {{/if}}
 </template>
